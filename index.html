@@ -368,19 +368,85 @@
       transform:translateY(-8px);
     }
 
-    /* ================= VIDEO ================= */
+/* ================= VIDEO ================= */
 
-    .video-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
+#video{
+  background:#f8fafc;
+}
 
-    .video-grid video{
-      width:100%;
-      border-radius:25px;
-      box-shadow:0 15px 35px rgba(0,0,0,0.15);
-    }
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+  align-items:start;
+}
+
+.video-card{
+  background:white;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 20px 45px rgba(0,0,0,0.10);
+  transition:0.4s ease;
+}
+
+.video-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 55px rgba(0,0,0,0.15);
+}
+
+.video-card iframe{
+  width:100%;
+  height:520px;
+  border:none;
+  display:block;
+  background:black;
+}
+
+.video-info{
+  padding:24px;
+}
+
+.video-info h3{
+  font-size:24px;
+  margin-bottom:12px;
+  color:#111827;
+}
+
+.video-info p{
+  color:#6b7280;
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .video-card iframe{
+    height:420px;
+  }
+
+  .video-info h3{
+    font-size:20px;
+  }
+
+}
+
+@media(max-width:576px){
+
+  .video-grid{
+    grid-template-columns:1fr;
+  }
+
+  .video-card iframe{
+    height:300px;
+  }
+
+  .video-info{
+    padding:20px;
+  }
+
+}
 
     /* ================= CTA ================= */
 
@@ -638,6 +704,7 @@
       <li><a href="#donation">Donasi</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#video">Video</a></li>
+      <li><a href="#contact">Kontak</a></li>
     </ul>
 
   </nav>
@@ -846,33 +913,74 @@
 
   </section>
 
-  <!-- VIDEO -->
+<!-- VIDEO -->
 
-  <section id="video">
+<section id="video">
 
-    <div class="section-title">
+  <div class="section-title">
 
-      <h2>Video Pelayanan</h2>
+    <h2>Video Pelayanan</h2>
 
-      <p>
-        Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.
-      </p>
+    <p>
+      Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.
+    </p>
+
+  </div>
+
+  <div class="video-grid">
+
+    <!-- VIDEO 1 -->
+
+    <div class="video-card">
+
+      <iframe
+        src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video1_aangcl&profile=cld-default"
+        allow="autoplay; fullscreen; encrypted-media"
+        allowfullscreen>
+      </iframe>
+
+      <div class="video-info">
+
+        <h3>Semangat kerja bakti jemaat untuk mendirikan rumah tuhan</h3>
+
+        <p>
+          Dokumentasi proses pembangunan dan pelayanan jemaat
+          GMAHK Perkumpulan Ambang. anggota dengan sangat semangat mendirikan gereja tuhan,
+          orang muda maupun yang sudah tua dengan kebersamaan melayani tuhan dengan hati yang tulus.
+          walaupun beban yang berat di pikul mereka percaya bahwa tuhan tak akan pernah meninggalkan mereka. tapi sebaliknya yakni tuhan sendiri yang akan menjadi penolong mereka.
+        </p>
+
+      </div>
 
     </div>
 
-    <div class="video-grid">
+    <!-- VIDEO 2 -->
 
-      <video autoplay muted loop controls>
-        <source src="./assets/video/video1.mp4" type="video/mp4">
-      </video>
+    <div class="video-card">
 
-      <video autoplay muted loop controls>
-        <source src="./assets/video/video2.mp4" type="video/mp4">
-      </video>
+      <iframe
+        src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video2_llnwly&profile=cld-default"
+        allow="autoplay; fullscreen; encrypted-media"
+        allowfullscreen>
+      </iframe>
+
+      <div class="video-info">
+
+        <h3>Jemaat semangat mempersiapkan pengorganisir menjadi perkumpulan</h3>
+
+        <p>
+          Kebersamaan jemaat dalam pelayanan dan kerja bakti
+          pembangunan rumah Tuhan. juga jemaat bersiap manaikan status yang awalnya cabang sekolah sabat menjadi perkumpulan,
+          mulai dari anak-anak, orang muda, orang tua, hingga oma dan opa. bersatu padu dalam semangat yang tinggi untuk melayani dan memuji nama tuhan.
+          hingga di titik ini jemaat sangat bersyukur oleh karna tuhan tidak pernah meninggalkan mereka.
+
+      </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
   <!-- CTA -->
 
@@ -911,7 +1019,7 @@
 
   <!-- FOOTER -->
 
-  <footer>
+  <footer id="contact">
 
     <div class="footer-content">
 
@@ -938,7 +1046,7 @@
         <h3>Kontak</h3>
 
         <p>Email: gabrielstevi27@gmail.com</p>
-        <p>Telp/Wa: 082296806402</p>
+        <p>Telp/Wa: 082296806402 (stevi)</p>
 
       </div>
 
