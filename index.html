@@ -40,60 +40,110 @@
     /* ================= NAVBAR ================= */
 
     nav{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      padding:18px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      z-index:1000;
-      background:rgba(0,0,0,0.55);
-      backdrop-filter:blur(12px);
-    }
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
 
-    .logo-container{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex:1;
-    }
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(12px);
 
-    .logo-container img{
-      width:52px;
-      height:52px;
-      object-fit:cover;
-      border-radius:50%;
-      background:white;
-      padding:4px;
-      flex-shrink:0;
-    }
+  transition:0.3s ease;
+}
 
-    .logo-text{
-      color:white;
-      font-size:22px;
-      font-weight:700;
-      line-height:1.3;
-    }
+/* NAVBAR KECIL SAAT SCROLL */
+nav.shrink{
+  padding:10px 8%;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(18px);
+}
 
-    nav ul{
-      display:flex;
-      gap:30px;
-      list-style:none;
-      flex-wrap:wrap;
-    }
+/* LOGO */
+.logo-container{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    nav ul li a{
-      color:white;
-      text-decoration:none;
-      font-weight:500;
-      transition:0.3s;
-    }
+.logo-container img{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+}
 
-    nav ul li a:hover{
-      color:#facc15;
-    }
+.logo-text{
+  color:white;
+  font-size:22px;
+  font-weight:700;
+}
+
+/* MENU */
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:32px;
+  color:white;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  nav{
+    flex-wrap:wrap;
+  }
+
+  nav ul{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+
+    flex-direction:column;
+    gap:15px;
+
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(20px);
+
+    padding:20px;
+
+    transform:translateY(-20px);
+    opacity:0;
+    pointer-events:none;
+
+    transition:0.4s ease;
+  }
+
+  nav ul.active{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
 
     /* ================= HERO ================= */
 
@@ -347,6 +397,43 @@
       font-size:14px;
     }
 
+    /* ================= GLOW BUTTON DONATUR ================= */
+.btn-glow{
+  background: linear-gradient(45deg, #1d4ed8, #3b82f6, #60a5fa);
+  color: white;
+  padding: 14px 25px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(59,130,246,0.4);
+}
+
+/* animasi glow */
+.btn-glow::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 60%);
+  animation: glowMove 3s linear infinite;
+}
+
+@keyframes glowMove{
+  0%{ transform: rotate(0deg); }
+  100%{ transform: rotate(360deg); }
+}
+
+.btn-glow:hover{
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 25px rgba(59,130,246,0.8);
+}
+
     /* ================= GALLERY ================= */
 
     .gallery{
@@ -446,6 +533,23 @@
     padding:20px;
   }
 
+}
+
+#hasil{
+  background:#f8fafc;
+}
+
+.gallery-item{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.gallery-item p{
+  text-align:center;
+  font-size:15px;
+  font-weight:500;
+  color:#4b5563;
 }
 
     /* ================= CTA ================= */
@@ -687,27 +791,28 @@
 
   <!-- NAVBAR -->
 
-  <nav>
+<nav id="navbar">
 
-    <div class="logo-container">
-
-      <img src="logo/logo.jpg" alt="Logo GMAHK">
-
-      <div class="logo-text">
-        GMAHK Perkumpulan Ambang
-      </div>
-
+  <div class="logo-container">
+    <img src="logo/logo.jpg" alt="Logo GMAHK">
+    <div class="logo-text">
+      GMAHK Perkumpulan Ambang
     </div>
+  </div>
 
-    <ul>
-      <li><a href="#about">Tentang</a></li>
-      <li><a href="#donation">Donasi</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#contact">Kontak</a></li>
-    </ul>
+  <!-- TOGGLE BUTTON -->
+  <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</div>
 
-  </nav>
+  <ul id="navMenu">
+    <li><a href="#about" onclick="closeMenu()">Tentang</a></li>
+    <li><a href="#donation" onclick="closeMenu()">Donasi</a></li>
+    <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+    <li><a href="#video" onclick="closeMenu()">Video</a></li>
+    <li><a href="#hasil" onclick="closeMenu()">Hasil</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Kontak</a></li>
+  </ul>
+
+</nav>
 
   <!-- HERO -->
 
@@ -792,8 +897,10 @@
       <h2>Progress Pembangunan</h2>
 
       <p>
-        Setiap dukungan akan membantu proses pembangunan gereja.
+        Setiap dukungan akan sangat membantu proses pembangunan gedung gereja GMAHK Perkumpulan Ambang.
       </p>
+
+      <p><b><i>TAHAP 1</i></b></p>
 
     </div>
 
@@ -859,10 +966,11 @@
             <h4>Bank BRI</h4>
 
             <p>
-              1234 5678 901
+              513801016586531
             </p>
 
             <span>
+              STEVI STEVANUS GABRIEL - 
               a/n GMAHK Perkumpulan Ambang
             </span>
 
@@ -870,7 +978,35 @@
 
         </div>
 
-      </div>
+      </div> <!-- rekening-list -->
+
+        <!-- BUTTON KIRIM BUKTI TRANSFER -->
+        <div class="center" style="margin-top:30px;">
+
+          <a
+            href="https://wa.me/6282296806402?text=Halo%20Admin%2C%20saya%20ingin%20mengirim%20bukti%20transfer%20dana%20donasi."
+            target="_blank"
+            class="btn btn-primary"
+          >
+            📩 Kirim Bukti Transfer via WhatsApp
+          </a>
+
+        </div>
+
+        <!-- BUTTON LIHAT DONATUR (GLOW ANIMATION) -->
+        <div class="center" style="margin-top:15px;">
+
+          <a
+            href="https://docs.google.com/spreadsheets/d/19wfUa_1Rc3pF3hh0siDGbHrLxY5paqfn/edit?usp=sharing"
+            target="_blank"
+            class="btn-glow"
+          >
+            📊 Lihat Daftar Donatur
+          </a>
+
+        </div>
+
+      </div> <!-- rekening-box -->
 
     </div>
 
@@ -982,6 +1118,43 @@
 
 </section>
 
+<!-- HASIL PEMBANGUNAN -->
+
+<section id="hasil">
+
+  <div class="section-title">
+    <h2>Hasil Pembangunan</h2>
+    <p>
+      Dokumentasi hasil pembangunan dari dana donasi jemaat GMAHK Perkumpulan Ambang.
+    </p>
+  </div>
+
+  <div class="gallery">
+
+      <div class="gallery-item">
+        <img src="./logo/onproses.png" alt="Hasil Pembangunan 1">
+        <p>Pembangunan Lantai Gereja</p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./logo/onproses.png" alt="Hasil Pembangunan 2">
+        <p>Pembangunan Plafon Gereja</p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./logo/onproses.png" alt="Hasil Pembangunan 3">
+        <p>Pembangunan Plester Dinding Gereja</p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./logo/onproses.png" alt="Hasil Pembangunan 4">
+        <p>Pembangunan Teras Depan Gereja</p>
+      </div>
+
+  </div>
+
+</section>
+
   <!-- CTA -->
 
   <section>
@@ -1045,8 +1218,19 @@
 
         <h3>Kontak</h3>
 
-        <p>Email: gabrielstevi27@gmail.com</p>
-        <p>Telp/Wa: 082296806402 (stevi)</p>
+        <p>
+          Email:
+          <a href="mailto:gabrielstevi27@gmail.com?subject=Pesan dari Website GMAHK Ambang">
+            gabrielstevi27@gmail.com
+          </a>
+        </p>
+
+        <p>
+          Telp/Wa:
+          <a href="https://wa.me/6282296806402" target="_blank">
+            082296806402 (stevi)
+          </a>
+        </p>
 
       </div>
 
@@ -1061,6 +1245,47 @@
   </footer>
 
   <!-- JAVASCRIPT -->
+
+<script>
+
+      const navMenu = document.getElementById("navMenu");
+      const menuToggle = document.getElementById("menuToggle");
+      const navbar = document.getElementById("navbar");
+
+      // TOGGLE MENU + ICON CHANGE ☰ / ❌
+      function toggleMenu(){
+        navMenu.classList.toggle("active");
+
+        if(navMenu.classList.contains("active")){
+          menuToggle.innerHTML = "✖";
+        } else {
+          menuToggle.innerHTML = "☰";
+        }
+      }
+
+      // CLOSE MENU
+      function closeMenu(){
+        navMenu.classList.remove("active");
+        menuToggle.innerHTML = "☰";
+      }
+
+      // CLOSE MENU WHEN CLICK LINK (extra safety)
+      document.querySelectorAll("#navMenu a").forEach(link=>{
+        link.addEventListener("click", closeMenu);
+      });
+
+      // NAVBAR SHRINK + BLUR ON SCROLL
+      window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 50){
+          navbar.classList.add("shrink");
+        } else {
+          navbar.classList.remove("shrink");
+        }
+
+      });
+
+</script>
 
   <script>
 
