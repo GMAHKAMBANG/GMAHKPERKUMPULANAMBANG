@@ -90,6 +90,8 @@
       font-size:20px;
       font-weight:700;
       line-height:1.2;
+      display: flex;
+      flex-direction: column; /* Mengatur agar teks otomatis turun ke bawah */
     }
 
     .nav-right-container {
@@ -197,6 +199,7 @@
 
     .hero-content{
       max-width:900px;
+      width: 100%;
       animation:fadeUp 1s ease;
     }
 
@@ -732,40 +735,46 @@
       }
     }
 
-    /* SMALL MOBILE VIEW (HP KECIL) */
+    /* SMALL MOBILE VIEW (HP SEPERTI DI GAMBAR KEDUA) */
     @media(max-width:576px){
       nav {
-        padding: 10px 4%;
+        display: flex;
+        flex-direction: row;       /* Menjaga bentuk satu baris ke kanan */
+        flex-wrap: nowrap;          /* Mencegah komponen kanan turun kebawah */
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
       }
       nav.shrink {
-        padding: 8px 4%;
+        padding: 10px 14px;
       }
       .logo-container{
         gap:8px;
-        max-width:60%;
+        max-width:62%;             /* Membatasi ruang teks agar tidak tabrakan */
       }
       .logo-container img{
-        width:36px;
-        height:36px;
+        width:40px;
+        height:40px;
       }
       .logo-text{
-        font-size:11px;
+        font-size:12px;             /* Menyesuaikan ukuran font agar pas */
         line-height:1.2;
       }
       .nav-right-container {
         gap: 8px;
+        width: auto;
       }
       .menu-toggle{
-        width:36px;
-        height:36px;
+        width:38px;
+        height:38px;
         font-size:20px;
-        border-radius:8px;
+        border-radius:10px;
       }
       .lang-switcher {
-        padding: 2px;
+        padding: 3px;
       }
       .lang-btn {
-        padding: 4px 10px;
+        padding: 5px 10px;
         font-size: 11px;
       }
       .hero{
@@ -810,6 +819,7 @@
       .about-text p {
         font-size: 14px;
         line-height: 1.7;
+        text-align: left;
       }
       .gallery{
         grid-template-columns:1fr;
@@ -902,26 +912,68 @@
       }
     }
 
-    /* ULTRA SMALL DEVICES (SCREEN < 360px) */
-    @media(max-width:360px){
+    /* ULTRA SMALL DEVICES (SCREEN < 400px - HP SANGAT KECIL) */
+    @media(max-width:400px){
       nav {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: row; 
+        flex-wrap: nowrap;
         justify-content: space-between;
-        padding: 8px 12px;
+        padding: 10px 10px;
+        align-items: center;
       }
       .logo-container {
-        max-width: 100%;
-        margin-bottom: 4px;
+        max-width: 58%;
+        margin-bottom: 0;
+      }
+      .logo-text {
+        font-size: 11px; 
+        line-height: 1.2;
       }
       .nav-right-container {
-        width: 100%;
-        justify-content: space-between;
-        border-top: 1px solid rgba(255,255,255,0.05);
-        padding-top: 6px;
+        width: auto;
+        justify-content: flex-end;
+        align-items: center;
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+        gap: 6px;
+      }
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+      }
+      .menu-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        border-radius: 8px;
       }
       .hero {
-        padding-top: 160px;
+        padding: 140px 4% 80px;
+      }
+      .hero-content h1 {
+        font-size: 24px;
+      }
+      .hero-content h3 {
+        font-size: 14px;
+      }
+      .hero-content p {
+        font-size: 13px;
+      }
+      section {
+        padding: 60px 4% !important;
+      }
+      .section-title h2 {
+        font-size: 22px;
+      }
+      .about-text h3 {
+        font-size: 19px;
+      }
+      .video-card iframe {
+        height: 180px;
+      }
+      .rekening-item p {
+        font-size: 15px;
       }
     }
 
@@ -935,7 +987,10 @@
 
     <div class="logo-container">
       <img src="logo/logo.png" alt="Logo GMAHK">
-      <div class="logo-text">GMAHK Perkumpulan Ambang</div>
+      <div class="logo-text">
+        <span>GMAHK</span>
+        <span>Perkumpulan Ambang</span>
+      </div>
     </div>
 
     <div class="nav-right-container">
@@ -1003,7 +1058,7 @@
         </p>
 
         <p data-key="about-p3">
-          Kami percaya bahwa melalui dukungan doa, tenaga, and partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.
+          Kami percaya bahwa melalui dukungan doa, tenaga, dan partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.
         </p>
 
       </div>
@@ -1203,7 +1258,7 @@
       <h2 data-key="cta-title">Jadilah Bagian Dari Pembangunan Ini</h2>
 
       <p data-key="cta-p1">
-        GMAHK Perkumpulan Ambang sedang membangun rumah ibadah yang berlokasi di wilayah Pantura DMBMG, tepatnya di Desa Ambang. Pembangunan gereja ini menjadi bagian dari komitmen pelayanan untuk menghadirkan tempat ibadah yang layak, nyaman, dan menjadi pusat pertumbuhan rohani bagi jemaat serta masyarakat sekitar. Lokasi pembangunan gereja ini memiliki posisi yang sangat strategis dalam mendukung pekabaran Injil dan pelayanan Advent di wilayah tersebut. Seiring dengan berkembangnya pekabaran Advent yang sudah diterima dengan baik oleh masyarakat, keberadaan gereja ini diharapkan dapat menjadi terang dan berkat bagi banyak orang, serta menjadi pusat pelayanan untuk memenangkan jiwa-jiwa bagi Kristus. Melalui pembangunan ini, kami percaya bahwa Tuhan sedang membuka jalan agar semakin banyak orang dapat mengenal kasih-Nya, bertumbuh dalam iman, dan dipersiapkan menyambut kedatangan Kristus yang kedua kali.
+        GMAHK Perkumpulan Ambang sedang membangun rumah ibadah yang berlokasi di wilayah Pantura DMBMG, tepatnya di Desa Ambang. Pembangunan gereja ini menjadi bagian dari komitmen pelayanan untuk menghadirkan tempat ibadah yang layak, nyaman, dan menjadi pusat pertumbuhan rohani bagi jemaat serta masyarakat sekitar. Lokasi pembangunan gereja ini memiliki posisi yang sangat strategis dalam mendukung pekabaran Injil dan pelayanan Advent di wilayah tersebut. Seiring dengan berkembangnya pekabaran Advent yang sudah diterima dengan baik oleh masyarakat, keberadaan gereja ini diharapkan dapat menjadi terang dan berkat bagi banyak orang, serta menjadi pusat pelayanan untuk memenangkan jiwa-jiwa bagi Kristus. Melalui pembangunan ini, kami percaya bahwa Tuhan sedang membuka jalan agar semakin banyak orang dapat mengenal kasih-Nya, bertumbuh dalam iman, and dipersiapkan menyambut kedatangan Kristus yang kedua kali.
       </p>
 
       <p data-key="cta-p2">
@@ -1298,7 +1353,7 @@
         "nav-about": "Tentang", "nav-donation": "Donasi", "nav-gallery": "Gallery", "nav-video": "Video", "nav-hasil": "Hasil", "nav-contact": "Kontak",
         "hero-title": "Mari Bersama Membangun Rumah Tuhan", "hero-desc": "Melayani dengan kasih, hidup dalam pengharapan, dan mempersiapkan kedatangan Kristus yang kedua kali.", "hero-btn-primary": "Donasi Sekarang", "hero-btn-secondary": "Tentang Gereja",
         "about-title": "Tentang Gereja", "about-subtitle": "Mari mengenal lebih dekat dengan GMAHK Perkumpulan Ambang.", "about-h3": "Tempat Ibadah Untuk Masa Depan",
-        "about-p1": "GMAHK Perkumpulan Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, dan menjadi pusat pelayanan rohani bagi masyarakat sekitar.",
+        "about-p1": "GMAHK Perkumpulan Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, and menjadi pusat pelayanan rohani bagi masyarakat sekitar.",
         "about-p2": "Saat ini kami sedang melakukan pembangunan gereja untuk menyediakan tempat ibadah yang nyaman, aman, and layak bagi seluruh jemaat. Pembangunan ini bukan hanya sekadar mendirikan sebuah gedung, tetapi juga membangun tempat di mana setiap orang dapat datang untuk berdoa, bersekutu, belajar firman Tuhan, dan merasakan kasih Kristus dalam kebersamaan.",
         "about-p3": "Kami percaya bahwa melalui dukungan doa, tenaga, dan partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.",
         "don-title": "Progress Pembangunan", "don-subtitle": "Setiap dukungan akan sangat membantu proses pembangunan gedung gereja GMAHK Perkumpulan Ambang.", "don-stage": "TAHAP 1",
@@ -1370,7 +1425,7 @@
 
     // DATA DONASI
     let targetDana = 50000000;
-    let danaTerkumpul = 1750000;
+    let danaTerkumpul = 1250000;
 
     function formatCurrency(angka){
       if(currentLang === 'id') {
