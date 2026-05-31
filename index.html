@@ -8,7 +8,6 @@
 
   <link rel="icon" type="image/png" href="logo/logo.png">
 
-  <!-- GOOGLE FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -93,6 +92,12 @@
       line-height:1.2;
     }
 
+    .nav-right-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     nav ul{
       display:flex;
       align-items:center;
@@ -113,6 +118,38 @@
     nav ul li a:hover{
       background:rgba(255,255,255,0.12);
       color:#facc15;
+    }
+
+    /* LANGUAGE SWITCHER BUTTONS */
+    .lang-switcher {
+      display: flex;
+      gap: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .lang-btn.active {
+      background: #facc15;
+      color: #111827;
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     /* HAMBURGER */
@@ -603,228 +640,289 @@
       }
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* ================= RESPONSIVE DESIGN ================= */
 
     @media(max-width:1100px){
-
       nav{
         padding:14px 5%;
       }
-
       nav.shrink{
         padding:10px 5%;
       }
-
       nav ul{
         gap:4px;
       }
-
       nav ul li a{
         padding:10px 12px;
         font-size:14px;
       }
-
       .logo-text{
         font-size:18px;
       }
-
       .hero-content h1{
         font-size:52px;
       }
-
     }
 
-    /* MOBILE NAVBAR */
-
+    /* TABLET & MOBILE VIEW */
     @media(max-width:860px){
-
       .menu-toggle{
         display:flex;
       }
-
       nav{
         padding:14px 5%;
       }
-
       nav.shrink{
         padding:12px 5%;
       }
-
       .logo-text{
         font-size:16px;
       }
-
+      .nav-right-container {
+        gap: 12px;
+      }
       nav ul{
         position:absolute;
         top:100%;
         left:0;
         width:100%;
-
         flex-direction:column;
         align-items:flex-start;
         gap:5px;
-
         background:rgba(0,0,0,0.96);
         backdrop-filter:blur(20px);
-
         padding:20px;
-
         border-top:1px solid rgba(255,255,255,0.08);
-
         opacity:0;
         visibility:hidden;
         transform:translateY(-10px);
-
         transition:0.35s ease;
       }
-
       nav ul.active{
         opacity:1;
         visibility:visible;
         transform:translateY(0);
       }
-
       nav ul li{
         width:100%;
       }
-
       nav ul li a{
         width:100%;
         padding:14px 16px;
         border-radius:14px;
         font-size:15px;
       }
-
       .hero{
         padding-top:160px;
       }
-
       .hero-content h1{
         font-size:42px;
       }
-
       .hero-content h3{
         font-size:22px;
       }
-
       .section-title h2{
         font-size:34px;
       }
-
       section{
         padding:90px 5%;
       }
-
       .video-card iframe{
         height:420px;
       }
-
     }
 
+    /* SMALL MOBILE VIEW (HP KECIL) */
     @media(max-width:576px){
-
+      nav {
+        padding: 10px 4%;
+      }
+      nav.shrink {
+        padding: 8px 4%;
+      }
       .logo-container{
-        gap:10px;
-        max-width:75%;
+        gap:8px;
+        max-width:60%;
       }
-
       .logo-container img{
-        width:42px;
-        height:42px;
+        width:36px;
+        height:36px;
       }
-
       .logo-text{
-        font-size:14px;
-        line-height:1.3;
+        font-size:11px;
+        line-height:1.2;
       }
-
+      .nav-right-container {
+        gap: 8px;
+      }
       .menu-toggle{
-        width:42px;
-        height:42px;
-        font-size:24px;
+        width:36px;
+        height:36px;
+        font-size:20px;
+        border-radius:8px;
       }
-
+      .lang-switcher {
+        padding: 2px;
+      }
+      .lang-btn {
+        padding: 4px 10px;
+        font-size: 11px;
+      }
       .hero{
-        padding-top:150px;
+        padding-top:140px;
       }
-
       .hero-content h1{
-        font-size:30px;
+        font-size:28px;
+        margin-bottom: 15px;
       }
-
       .hero-content h3{
-        font-size:18px;
+        font-size:16px;
       }
-
       .hero-content p{
-        font-size:15px;
+        font-size:14px;
+        line-height: 1.6;
+        margin-bottom: 30px;
       }
-
       .hero-buttons{
         flex-direction:column;
+        gap: 12px;
       }
-
       .btn{
         width:100%;
+        padding: 12px 20px;
+        font-size: 14px;
       }
-
+      .section-title {
+        margin-bottom: 40px;
+      }
       .section-title h2{
-        font-size:28px;
+        font-size:26px;
       }
-
+      .section-title p {
+        font-size: 14px;
+      }
       .about{
-        gap:35px;
+        gap:30px;
       }
-
       .about-text h3{
-        font-size:28px;
+        font-size:22px;
       }
-
+      .about-text p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
       .gallery{
         grid-template-columns:1fr;
       }
-
       .gallery img{
-        height:auto;
+        height:220px;
       }
-
       .video-grid{
         grid-template-columns:1fr;
+        gap: 25px;
       }
-
       .video-card iframe{
-        height:300px;
+        height:240px;
       }
-
       .video-info{
-        padding:20px;
+        padding:16px;
       }
-
+      .video-info h3 {
+        font-size: 18px;
+      }
+      .video-info p {
+        font-size: 13px;
+      }
       .donation-wrapper{
-        padding:25px 18px;
+        padding:20px 15px;
+        border-radius: 20px;
       }
-
+      .donation-top {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .donation-card {
+        padding: 15px;
+      }
+      .donation-card p {
+        font-size: 20px;
+      }
+      .progress-bar {
+        margin: 20px 0;
+        height: 16px;
+      }
       .rekening-box{
-        padding:25px 18px;
+        padding:20px 15px;
+        border-radius: 20px;
+        margin-top: 25px;
       }
-
+      .rekening-box h3 {
+        font-size: 20px;
+      }
+      .rekening-box p {
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
       .rekening-item{
         width:100%;
         min-width:auto;
+        padding: 15px;
       }
-
+      .rekening-item p {
+        font-size: 18px;
+      }
+      .btn-glow {
+        padding: 12px 20px;
+        font-size: 14px;
+        width: 100%;
+      }
       .cta{
-        padding:60px 20px;
+        padding:40px 15px;
+        border-radius: 20px;
       }
-
       .cta h2{
-        font-size:28px;
+        font-size:24px;
       }
-
+      .cta p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
       footer{
         padding:40px 5%;
+        margin-top: 60px;
       }
+      .footer-content {
+        gap: 30px;
+      }
+      .footer-content h3 {
+        font-size: 18px;
+      }
+      .footer-content p, .footer-content a {
+        font-size: 13px;
+      }
+    }
 
+    /* ULTRA SMALL DEVICES (SCREEN < 360px) */
+    @media(max-width:360px){
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 8px 12px;
+      }
+      .logo-container {
+        max-width: 100%;
+        margin-bottom: 4px;
+      }
+      .nav-right-container {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 6px;
+      }
+      .hero {
+        padding-top: 160px;
+      }
     }
 
   </style>
@@ -833,77 +931,59 @@
 
 <body>
 
-  <!-- NAVBAR -->
-
   <nav id="navbar">
 
     <div class="logo-container">
       <img src="logo/logo.png" alt="Logo GMAHK">
+      <div class="logo-text">GMAHK Perkumpulan Ambang</div>
+    </div>
 
-      <div class="logo-text">
-        GMAHK Perkumpulan Ambang
+    <div class="nav-right-container">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="switchLang('id')" id="btn-id">ID</button>
+        <button class="lang-btn" onclick="switchLang('en')" id="btn-en">EN</button>
       </div>
-    </div>
 
-    <div class="menu-toggle" id="menuToggle">
-      ☰
-    </div>
+      <div class="menu-toggle" id="menuToggle">☰</div>
 
-    <ul id="navMenu">
-      <li><a href="#about">Tentang</a></li>
-      <li><a href="#donation">Donasi</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#hasil">Hasil</a></li>
-      <li><a href="#contact">Kontak</a></li>
-    </ul>
+      <ul id="navMenu">
+        <li><a href="#about" data-key="nav-about">Tentang</a></li>
+        <li><a href="#donation" data-key="nav-donation">Donasi</a></li>
+        <li><a href="#gallery" data-key="nav-gallery">Gallery</a></li>
+        <li><a href="#video" data-key="nav-video">Video</a></li>
+        <li><a href="#hasil" data-key="nav-hasil">Hasil</a></li>
+        <li><a href="#contact" data-key="nav-contact">Kontak</a></li>
+      </ul>
+    </div>
 
   </nav>
-
-  <!-- HERO -->
 
   <section class="hero">
 
     <div class="hero-content">
 
-      <h1>
-        Mari Bersama Membangun Rumah Tuhan
-      </h1>
+      <h1 data-key="hero-title">Mari Bersama Membangun Rumah Tuhan</h1>
 
       <h3>GMAHK Perkumpulan Ambang</h3>
 
-      <p>
+      <p data-key="hero-desc">
         Melayani dengan kasih, hidup dalam pengharapan, dan mempersiapkan kedatangan Kristus yang kedua kali.
       </p>
 
       <div class="hero-buttons">
-
-        <a href="#donation" class="btn btn-primary">
-          Donasi Sekarang
-        </a>
-
-        <a href="#about" class="btn btn-secondary">
-          Tentang Gereja
-        </a>
-
+        <a href="#donation" class="btn btn-primary" data-key="hero-btn-primary">Donasi Sekarang</a>
+        <a href="#about" class="btn btn-secondary" data-key="hero-btn-secondary">Tentang Gereja</a>
       </div>
 
     </div>
 
   </section>
 
-  <!-- ABOUT -->
-
   <section id="about">
 
     <div class="section-title">
-
-      <h2>Tentang Gereja</h2>
-
-      <p>
-        Mari mengenal lebih dekat dengan GMAHK Perkumpulan Ambang.
-      </p>
-
+      <h2 data-key="about-title">Tentang Gereja</h2>
+      <p data-key="about-subtitle">Mari mengenal lebih dekat dengan GMAHK Perkumpulan Ambang.</p>
     </div>
 
     <div class="about">
@@ -912,20 +992,18 @@
 
       <div class="about-text">
 
-        <h3>
-          Tempat Ibadah Untuk Masa Depan
-        </h3>
+        <h3 data-key="about-h3">Tempat Ibadah Untuk Masa Depan</h3>
 
-        <p>
+        <p data-key="about-p1">
           GMAHK Perkumpulan Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, dan menjadi pusat pelayanan rohani bagi masyarakat sekitar.
         </p>
 
-        <p>
-          Saat ini kami sedang melakukan pembangunan gereja untuk menyediakan tempat ibadah yang nyaman, aman, dan layak bagi seluruh jemaat. Pembangunan ini bukan hanya sekadar mendirikan sebuah gedung, tetapi juga membangun tempat di mana setiap orang dapat datang untuk berdoa, bersekutu, belajar firman Tuhan, dan merasakan kasih Kristus dalam kebersamaan.
+        <p data-key="about-p2">
+          Saat ini kami sedang melakukan pembangunan gereja untuk menyediakan tempat ibadah yang nyaman, aman, and layak bagi seluruh jemaat. Pembangunan ini bukan hanya sekadar mendirikan sebuah gedung, tetapi juga membangun tempat di mana setiap orang dapat datang untuk berdoa, bersekutu, belajar firman Tuhan, dan merasakan kasih Kristus dalam kebersamaan.
         </p>
 
-        <p>
-          Kami percaya bahwa melalui dukungan doa, tenaga, dan partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.
+        <p data-key="about-p3">
+          Kami percaya bahwa melalui dukungan doa, tenaga, and partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.
         </p>
 
       </div>
@@ -934,19 +1012,17 @@
 
   </section>
 
-  <!-- DONATION -->
-
   <section id="donation">
 
     <div class="section-title">
 
-      <h2>Progress Pembangunan</h2>
+      <h2 data-key="don-title">Progress Pembangunan</h2>
 
-      <p>
+      <p data-key="don-subtitle">
         Setiap dukungan akan sangat membantu proses pembangunan gedung gereja GMAHK Perkumpulan Ambang.
       </p>
 
-      <p><b><i>TAHAP 1</i></b></p>
+      <p><b data-key="don-stage"><i>TAHAP 1</i></b></p>
 
     </div>
 
@@ -955,125 +1031,74 @@
       <div class="donation-top">
 
         <div class="donation-card">
-
-          <h3>Target Dana</h3>
-
+          <h3 data-key="card-target">Target Dana</h3>
           <p id="targetDana"></p>
-
         </div>
 
         <div class="donation-card">
-
-          <h3>Dana Terkumpul</h3>
-
+          <h3 data-key="card-collected">Dana Terkumpul</h3>
           <p id="danaTerkumpul"></p>
-
         </div>
 
         <div class="donation-card">
-
-          <h3>Progress</h3>
-
+          <h3 data-key="card-progress">Progress</h3>
           <p id="persenProgress"></p>
-
         </div>
 
       </div>
 
       <div class="progress-bar">
-
         <div class="progress" id="progressBar"></div>
-
       </div>
 
       <div class="center">
-
-        <p style="margin-top:25px; color:#6b7280;">
+        <p style="margin-top:25px; color:#6b7280;" data-key="don-thanks">
           Terima kasih kepada seluruh donatur yang telah mendukung pembangunan gereja.
         </p>
-
       </div>
-
-      <!-- REKENING -->
 
       <div class="rekening-box">
 
-        <h3>Donasi Melalui Transfer Bank</h3>
+        <h3 data-key="bank-title">Donasi Melalui Transfer Bank</h3>
 
-        <p>
-          Bagi Bapak/Ibu/Saudara yang ingin mendukung pembangunan gereja,
-          donasi dapat dikirim melalui rekening berikut:
+        <p data-key="bank-desc">
+          Bagi Bapak/Ibu/Saudara yang ingin mendukung pembangunan gereja, donasi dapat dikirim melalui rekening berikut:
         </p>
 
         <div class="rekening-list">
-
           <div class="rekening-item">
-
             <h4>Bank BRI</h4>
-
-            <p>
-              513801032891532
-            </p>
-
-            <span>
-              SRI WARTINI - 
-              a/n GMAHK Perkumpulan Ambang
-            </span>
-
+            <p>513801032891532</p>
+            <span data-key="bank-an">SRI WARTINI - a/n GMAHK Perkumpulan Ambang</span>
           </div>
-
         </div>
 
-      </div> <!-- rekening-list -->
+      </div>
 
-        <!-- BUTTON KIRIM BUKTI TRANSFER -->
-        <div class="center" style="margin-top:30px;">
+      <div class="center" style="margin-top:30px;">
+        <a href="https://wa.me/6282296806402?text=Halo%20Admin%2C%20saya%20ingin%20mengirim%20bukti%20transfer%20dana%20donasi." target="_blank" class="btn btn-primary" data-key="btn-wa">
+          📩 Kirim Bukti Transfer via WhatsApp
+        </a>
+      </div>
 
-          <a
-            href="https://wa.me/6282296806402?text=Halo%20Admin%2C%20saya%20ingin%20mengirim%20bukti%20transfer%20dana%20donasi."
-            target="_blank"
-            class="btn btn-primary"
-          >
-            📩 Kirim Bukti Transfer via WhatsApp
-          </a>
-
-        </div>
-
-        <!-- BUTTON LIHAT DONATUR (GLOW ANIMATION) -->
-        <div class="center" style="margin-top:15px;">
-
-          <a
-            href="https://docs.google.com/spreadsheets/d/19wfUa_1Rc3pF3hh0siDGbHrLxY5paqfn/edit?usp=sharing"
-            target="_blank"
-            class="btn-glow"
-          >
-            📊 Lihat Daftar Donatur
-          </a>
-
-        </div>
-
-      </div> <!-- rekening-box -->
+      <div class="center" style="margin-top:15px;">
+        <a href="https://docs.google.com/spreadsheets/d/19wfUa_1Rc3pF3hh0siDGbHrLxY5paqfn/edit?usp=sharing" target="_blank" class="btn-glow" data-key="btn-sheet">
+          📊 Lihat Daftar Donatur
+        </a>
+      </div>
 
     </div>
 
   </section>
 
-  <!-- GALLERY -->
-
   <section id="gallery">
 
     <div class="section-title">
-
-      <h2>Gallery Kegiatan</h2>
-
-      <p>
-        Dokumentasi kegiatan GMAHK Perkumpulan Ambang untuk pembangunan gereja.
-      </p>
-
+      <h2 data-key="gal-title">Gallery Kegiatan</h2>
+      <p data-key="gal-subtitle">Dokumentasi kegiatan GMAHK Perkumpulan Ambang untuk pembangunan gereja.</p>
     </div>
 
     <div class="gallery">
-
       <img src="./assets/foto/foto1.jpg">
       <img src="./assets/foto/foto2.jpg">
       <img src="./assets/foto/foto3.jpg">
@@ -1096,331 +1121,276 @@
       <img src="./assets/foto/foto20.jpg">
       <img src="./assets/foto/foto21.jpg">
       <img src="./assets/foto/foto22.jpg">
+    </div>
+
+  </section>
+
+  <section id="video">
+
+    <div class="section-title">
+      <h2 data-key="vid-title">Video Pelayanan</h2>
+      <p data-key="vid-subtitle">Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video_1_1_rl99yr" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+        <div class="video-info">
+          <h3 data-key="v1-title">Kerja Bakti Jemaat dalam Pembuatan Dasar Pembangunan Gedung Gereja di Desa Ambang</h3>
+          <p data-key="v1-desc">
+            Jemaat dengan penuh semangat dan kebersamaan melaksanakan kerja bakti dalam pembuatan fondasi pembangunan gedung gereja di Desa Ambang sebagai wujud nyata iman, pelayanan, dan dukungan terhadap pekerjaan Tuhan. Seluruh jemaat turut ambil bagian sesuai kemampuan masing-masing, mulai dari membersihkan lokasi, menggali tanah, mengangkat batu, hingga menyiapkan konsumsi bagi para pekerja. Melalui semangat gotong royong dan pengorbanan yang tulus, kegiatan ini tidak hanya membantu mempercepat proses pembangunan gereja, tetapi juga semakin mempererat persaudaraan, kebersamaan, dan kasih di antara sesama jemaat.
+          </p>
+        </div>
+      </div>    
+
+      <div class="video-card">
+        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video1_aangcl&profile=cld-default" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+        <div class="video-info">
+          <h3 data-key="v2-title">Semangat kerja bakti jemaat untuk mendirikan rumah tuhan</h3>
+          <p data-key="v2-desc">
+            Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Perkumpulan Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan dan beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.
+          </p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video2_llnwly&profile=cld-default" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+        <div class="video-info">
+          <h3 data-key="v3-title">Jemaat semangat mempersiapkan pengorganisir menjadi perkumpulan</h3>
+          <p data-key="v3-desc">
+            Kebersamaan jemaat dalam pelayanan dan kerja bakti pembangunan rumah Tuhan menjadi wujud nyata iman dan semangat pengabdian kepada-Nya. Di tengah proses pembangunan ini, jemaat juga sedang mempersiapkan peningkatan status dari Cabang Sekolah Sabat menjadi Perkumpulan. Mulai dari anak-anak, kaum muda, orang dewasa, hingga oma dan opa, seluruh jemaat bersatu dalam semangat yang tinggi untuk melayani, memuji, dan memuliakan nama Tuhan. Hingga saat ini, jemaat terus bersyukur atas penyertaan dan kasih Tuhan yang tidak pernah meninggalkan mereka, melainkan senantiasa membimbing, menguatkan, dan memberkati setiap langkah pelayanan yang dilakukan.
+          </p>
+        </div>
+      </div>
 
     </div>
 
   </section>
 
-<!-- VIDEO -->
+  <section id="hasil">
 
-<section id="video">
-
-  <div class="section-title">
-
-    <h2>Video Pelayanan</h2>
-
-    <p>
-      Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.
-    </p>
-
-  </div>
-
-  <div class="video-grid">
-
-
-    <!-- VIDEO awal -->
-
-    <div class="video-card">
-
-      <iframe
-        src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video_1_1_rl99yr"
-        allow="autoplay; fullscreen; encrypted-media"
-        allowfullscreen>
-      </iframe>
-
-      <div class="video-info">
-
-        <h3>Kerja Bakti Jemaat dalam Pembuatan Dasar Pembangunan Gedung Gereja di Desa Ambang</h3>
-
-        <p>
-        Jemaat dengan penuh semangat melaksanakan kerja bakti dalam pembuatan dasar pembangunan gedung gereja di Desa Ambang 
-        sebagai bentuk pelayanan dan kebersamaan. Seluruh jemaat turut mengambil bagian dalam membersihkan lokasi, menggali tanah, 
-        mengangkat batu, hingga menyediakan konsumsi. Kegiatan ini mempercepat pembangunan gereja sekaligus mempererat persaudaraan dan 
-        semangat gotong royong jemaat.  
-        </p>
-
-      </div>
-
-    </div>    
-
-    <!-- VIDEO 1 -->
-
-    <div class="video-card">
-
-      <iframe
-        src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video1_aangcl&profile=cld-default"
-        allow="autoplay; fullscreen; encrypted-media"
-        allowfullscreen>
-      </iframe>
-
-      <div class="video-info">
-
-        <h3>Semangat kerja bakti jemaat untuk mendirikan rumah tuhan</h3>
-
-        <p>
-          Dokumentasi proses pembangunan dan pelayanan jemaat
-          GMAHK Perkumpulan Ambang. anggota dengan sangat semangat mendirikan gereja tuhan,
-          orang muda maupun yang sudah tua dengan kebersamaan melayani tuhan dengan hati yang tulus.
-          walaupun beban yang berat di pikul mereka percaya bahwa tuhan tak akan pernah meninggalkan mereka. tapi sebaliknya yakni tuhan sendiri yang akan menjadi penolong mereka.
-        </p>
-
-      </div>
-
+    <div class="section-title">
+      <h2 data-key="has-title">Hasil Pembangunan</h2>
+      <p data-key="has-subtitle">Dokumentasi hasil pembangunan dari dana donasi yang terkumpul oleh jemaat GMAHK Perkumpulan Ambang.</p>
     </div>
 
-    <!-- VIDEO 2 -->
-
-    <div class="video-card">
-
-      <iframe
-        src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video2_llnwly&profile=cld-default"
-        allow="autoplay; fullscreen; encrypted-media"
-        allowfullscreen>
-      </iframe>
-
-      <div class="video-info">
-
-        <h3>Jemaat semangat mempersiapkan pengorganisir menjadi perkumpulan</h3>
-
-        <p>
-          Kebersamaan jemaat dalam pelayanan dan kerja bakti
-          pembangunan rumah Tuhan. juga jemaat bersiap manaikan status yang awalnya cabang sekolah sabat menjadi perkumpulan,
-          mulai dari anak-anak, orang muda, orang tua, hingga oma dan opa. bersatu padu dalam semangat yang tinggi untuk melayani dan memuji nama tuhan.
-          hingga di titik ini jemaat sangat bersyukur oleh karna tuhan tidak pernah meninggalkan mereka.
-
-      </div>
-
+    <div class="gallery">
+        <div class="gallery-item">
+          <img src="./logo/onproses.png" alt="Hasil Pembangunan 1">
+          <p data-key="h-item1">Pembangunan Lantai Gereja</p>
+        </div>
+        <div class="gallery-item">
+          <img src="./logo/onproses.png" alt="Hasil Pembangunan 2">
+          <p data-key="h-item2">Pembangunan Plafon Gereja</p>
+        </div>
+        <div class="gallery-item">
+          <img src="./logo/onproses.png" alt="Hasil Pembangunan 3">
+          <p data-key="h-item3">Pembangunan Plester Dinding Gereja</p>
+        </div>
+        <div class="gallery-item">
+          <img src="./logo/onproses.png" alt="Hasil Pembangunan 4">
+          <p data-key="h-item4">Pembangunan Teras Depan Gereja</p>
+        </div>
     </div>
 
-  </div>
-
-</section>
-
-<!-- HASIL PEMBANGUNAN -->
-
-<section id="hasil">
-
-  <div class="section-title">
-    <h2>Hasil Pembangunan</h2>
-    <p>
-      Dokumentasi hasil pembangunan dari dana donasi yang terkumpul oleh jemaat GMAHK Perkumpulan Ambang.
-    </p>
-  </div>
-
-  <div class="gallery">
-
-      <div class="gallery-item">
-        <img src="./logo/onproses.png" alt="Hasil Pembangunan 1">
-        <p>Pembangunan Lantai Gereja</p>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./logo/onproses.png" alt="Hasil Pembangunan 2">
-        <p>Pembangunan Plafon Gereja</p>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./logo/onproses.png" alt="Hasil Pembangunan 3">
-        <p>Pembangunan Plester Dinding Gereja</p>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./logo/onproses.png" alt="Hasil Pembangunan 4">
-        <p>Pembangunan Teras Depan Gereja</p>
-      </div>
-
-  </div>
-
-</section>
-
-  <!-- CTA -->
+  </section>
 
   <section>
 
     <div class="cta">
 
-      <h2>
-        Jadilah Bagian Dari Pembangunan Ini
-      </h2>
+      <h2 data-key="cta-title">Jadilah Bagian Dari Pembangunan Ini</h2>
 
-      <p>
-        GMAHK Perkumpulan Ambang sedang membangun rumah ibadah yang berlokasi di wilayah Pantura DMBMG, tepatnya di Desa Ambang. Pembangunan gereja ini menjadi bagian dari komitmen pelayanan untuk menghadirkan tempat ibadah yang layak, nyaman, dan menjadi pusat pertumbuhan rohani bagi jemaat serta masyarakat sekitar.
-
-        Lokasi pembangunan gereja ini memiliki posisi yang sangat strategis dalam mendukung pekabaran Injil dan pelayanan Advent di wilayah tersebut. Seiring dengan berkembangnya pekabaran Advent yang sudah diterima dengan baik oleh masyarakat, keberadaan gereja ini diharapkan dapat menjadi terang dan berkat bagi banyak orang, serta menjadi pusat pelayanan untuk memenangkan jiwa-jiwa bagi Kristus.
-
-        Melalui pembangunan ini, kami percaya bahwa Tuhan sedang membuka jalan agar semakin banyak orang dapat mengenal kasih-Nya, bertumbuh dalam iman, dan dipersiapkan menyambut kedatangan Kristus yang kedua kali.
+      <p data-key="cta-p1">
+        GMAHK Perkumpulan Ambang sedang membangun rumah ibadah yang berlokasi di wilayah Pantura DMBMG, tepatnya di Desa Ambang. Pembangunan gereja ini menjadi bagian dari komitmen pelayanan untuk menghadirkan tempat ibadah yang layak, nyaman, dan menjadi pusat pertumbuhan rohani bagi jemaat serta masyarakat sekitar. Lokasi pembangunan gereja ini memiliki posisi yang sangat strategis dalam mendukung pekabaran Injil dan pelayanan Advent di wilayah tersebut. Seiring dengan berkembangnya pekabaran Advent yang sudah diterima dengan baik oleh masyarakat, keberadaan gereja ini diharapkan dapat menjadi terang dan berkat bagi banyak orang, serta menjadi pusat pelayanan untuk memenangkan jiwa-jiwa bagi Kristus. Melalui pembangunan ini, kami percaya bahwa Tuhan sedang membuka jalan agar semakin banyak orang dapat mengenal kasih-Nya, bertumbuh dalam iman, dan dipersiapkan menyambut kedatangan Kristus yang kedua kali.
       </p>
 
-      <p>
-        “Karena itu pergilah, jadikanlah semua bangsa murid-Ku dan baptislah mereka dalam nama Bapa dan Anak dan Roh Kudus.”
-        - Matius 28:19
+      <p data-key="cta-p2">
+        “Karena itu pergilah, jadikanlah semua bangsa murid-Ku dan baptislah mereka dalam nama Bapa dan Anak dan Roh Kudus.” - Matius 28:19
       </p>
 
-      <p>
-        Melalui dukungan Anda, pembangunan gereja ini dapat menjadi tempat di mana banyak jiwa mengenal kasih Tuhan dan menerima pengharapan keselamatan.
+      <p data-key="cta-p3">
+        Melalui dukungan Anda, pembangunan gereja ini dapat menjadi tempat di mana banyak jiwa mengenal kasih Tuhan and menerima pengharapan keselamatan.
       </p>
 
-      <a href="#donation" class="btn btn-primary">
-        Dukung Sekarang
-      </a>
+      <a href="#donation" class="btn btn-primary" data-key="cta-btn">Dukung Sekarang</a>
 
     </div>
 
   </section>
-
-  <!-- FOOTER -->
 
   <footer id="contact">
 
     <div class="footer-content">
 
       <div>
-
-        <h3>
-          GMAHK Perkumpulan Ambang
-        </h3>
-
+        <h3>GMAHK Perkumpulan Ambang</h3>
+        <p data-key="foot-desc">Website resmi pembangunan gereja dan penggalangan dana.</p>
         <p>
-          Website resmi pembangunan gereja dan penggalangan dana.
-        </p>
-
-        <p>
-          <a href="https://www.facebook.com/profile.php?id=61589136612728" target="_blank">
+          <a href="https://www.facebook.com/profile.php?id=61589136612728" target="_blank" data-key="foot-fb">
             Klik di sini untuk melihat halaman Facebook kami
           </a>
         </p>
-
       </div>
 
       <div>
-
-        <h3>Kontak</h3>
-
+        <h3 data-key="foot-contact">Kontak</h3>
         <p>
           Email:
-          <a href="mailto:gabrielstevi27@gmail.com?subject=Pesan dari Website GMAHK Ambang">
-            gabrielstevi27@gmail.com
-          </a>
+          <a href="mailto:gabrielstevi27@gmail.com?subject=Pesan dari Website GMAHK Ambang">gabrielstevi27@gmail.com</a>
         </p>
-
         <p>
           Telp/Wa:
-          <a href="https://wa.me/6282296806402" target="_blank">
-            082296806402 (stevi)
-          </a>
+          <a href="https://wa.me/6282296806402" target="_blank">082296806402 (stevi)</a>
         </p>
-
       </div>
 
     </div>
 
     <div class="footer-bottom">
-
       © 2026 GMAHK Perkumpulan Ambang. All Rights Reserved.
-
     </div>
 
   </footer>
 
-  <!-- JAVASCRIPT -->
-
   <script>
-
     const navMenu = document.getElementById("navMenu");
     const menuToggle = document.getElementById("menuToggle");
     const navbar = document.getElementById("navbar");
 
-    // TOGGLE MENU
-
     menuToggle.addEventListener("click", () => {
-
       navMenu.classList.toggle("active");
-
       if(navMenu.classList.contains("active")){
         menuToggle.innerHTML = "✕";
       }else{
         menuToggle.innerHTML = "☰";
       }
-
     });
-
-    // CLOSE MENU WHEN CLICK LINK
 
     document.querySelectorAll("#navMenu a").forEach(link => {
-
       link.addEventListener("click", () => {
-
         navMenu.classList.remove("active");
         menuToggle.innerHTML = "☰";
-
       });
-
     });
 
-    // NAVBAR SHRINK
-
     window.addEventListener("scroll", () => {
-
       if(window.scrollY > 50){
         navbar.classList.add("shrink");
       }else{
         navbar.classList.remove("shrink");
       }
-
     });
 
-    // CLOSE MENU IF RESIZE TO DESKTOP
-
     window.addEventListener("resize", () => {
-
       if(window.innerWidth > 860){
         navMenu.classList.remove("active");
         menuToggle.innerHTML = "☰";
       }
-
     });
-
   </script>
 
   <script>
+    // DATA TRANSLASI BAHASA
+    const langData = {
+      id: {
+        "nav-about": "Tentang", "nav-donation": "Donasi", "nav-gallery": "Gallery", "nav-video": "Video", "nav-hasil": "Hasil", "nav-contact": "Kontak",
+        "hero-title": "Mari Bersama Membangun Rumah Tuhan", "hero-desc": "Melayani dengan kasih, hidup dalam pengharapan, dan mempersiapkan kedatangan Kristus yang kedua kali.", "hero-btn-primary": "Donasi Sekarang", "hero-btn-secondary": "Tentang Gereja",
+        "about-title": "Tentang Gereja", "about-subtitle": "Mari mengenal lebih dekat dengan GMAHK Perkumpulan Ambang.", "about-h3": "Tempat Ibadah Untuk Masa Depan",
+        "about-p1": "GMAHK Perkumpulan Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, dan menjadi pusat pelayanan rohani bagi masyarakat sekitar.",
+        "about-p2": "Saat ini kami sedang melakukan pembangunan gereja untuk menyediakan tempat ibadah yang nyaman, aman, and layak bagi seluruh jemaat. Pembangunan ini bukan hanya sekadar mendirikan sebuah gedung, tetapi juga membangun tempat di mana setiap orang dapat datang untuk berdoa, bersekutu, belajar firman Tuhan, dan merasakan kasih Kristus dalam kebersamaan.",
+        "about-p3": "Kami percaya bahwa melalui dukungan doa, tenaga, dan partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.",
+        "don-title": "Progress Pembangunan", "don-subtitle": "Setiap dukungan akan sangat membantu proses pembangunan gedung gereja GMAHK Perkumpulan Ambang.", "don-stage": "TAHAP 1",
+        "card-target": "Target Dana", "card-collected": "Dana Terkumpul", "card-progress": "Progress", "don-thanks": "Terima kasih kepada seluruh donatur yang telah mendukung pembangunan gereja.",
+        "bank-title": "Donasi Melalui Transfer Bank", "bank-desc": "Bagi Bapak/Ibu/Saudara yang ingin mendukung pembangunan gereja, donasi dapat dikirim melalui rekening berikut:", "bank-an": "SRI WARTINI - a/n GMAHK Perkumpulan Ambang",
+        "btn-wa": "📩 Kirim Bukti Transfer via WhatsApp", "btn-sheet": "📊 Lihat Daftar Donatur",
+        "gal-title": "Gallery Kegiatan", "gal-subtitle": "Dokumentasi kegiatan GMAHK Perkumpulan Ambang untuk pembangunan gereja.",
+        "vid-title": "Video Pelayanan", "vid-subtitle": "Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.",
+        "v1-title": "Kerja Bakti Jemaat dalam Pembuatan Dasar Pembangunan Gedung Gereja di Desa Ambang", "v1-desc": "Jemaat dengan penuh semangat dan kebersamaan melaksanakan kerja bakti dalam pembuatan fondasi pembangunan gedung gereja di Desa Ambang sebagai wujud nyata iman, pelayanan, dan dukungan terhadap pekerjaan Tuhan. Seluruh jemaat turut ambil bagian sesuai kemampuan masing-masing, mulai dari membersihkan lokasi, menggali tanah, mengangkat batu, hingga menyiapkan konsumsi bagi para pekerja. Melalui semangat gotong royong dan pengorbanan yang tulus, kegiatan ini tidak hanya membantu mempercepat proses pembangunan gereja, tetapi juga semakin mempererat persaudaraan, kebersamaan, dan kasih di antara sesama jemaat.",
+        "v2-title": "Semangat kerja bakti jemaat untuk mendirikan rumah tuhan", "v2-desc": "Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Perkumpulan Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan dan beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.",
+        "v3-title": "Jemaat semangat mempersiapkan pengorganisir menjadi perkumpulan", "v3-desc": "Kebersamaan jemaat dalam pelayanan dan kerja bakti pembangunan rumah Tuhan menjadi wujud nyata iman dan semangat pengabdian kepada-Nya. Di tengah proses pembangunan ini, jemaat juga sedang mempersiapkan peningkatan status dari Cabang Sekolah Sabat menjadi Perkumpulan. Mulai dari anak-anak, kaum muda, orang dewasa, hingga oma dan opa, seluruh jemaat bersatu dalam semangat yang tinggi untuk melayani, memuji, dan memuliakan nama Tuhan. Hingga saat ini, jemaat terus bersyukur atas penyertaan dan kasih Tuhan yang tidak pernah meninggalkan mereka, melainkan senantiasa membimbing, menguatkan, dan memberkati setiap langkah pelayanan yang dilakukan.",
+        "has-title": "Hasil Pembangunan", "has-subtitle": "Dokumentasi hasil pembangunan dari dana donasi yang terkumpul oleh jemaat GMAHK Perkumpulan Ambang.",
+        "h-item1": "Pembangunan Lantai Gereja", "h-item2": "Pembangunan Plafon Gereja", "h-item3": "Pembangunan Plester Dinding Gereja", "h-item4": "Pembangunan Teras Depan Gereja",
+        "cta-title": "Jadilah Bagian Dari Pembangunan Ini",
+        "cta-p1": "GMAHK Perkumpulan Ambang sedang membangun rumah ibadah yang berlokasi di wilayah Pantura DMBMG, tepatnya di Desa Ambang. Pembangunan gereja ini menjadi bagian dari komitmen pelayanan untuk menghadirkan tempat ibadah yang layak, nyaman, dan menjadi pusat pertumbuhan rohani bagi jemaat serta masyarakat sekitar. Lokasi pembangunan gereja ini memiliki posisi yang sangat strategis dalam mendukung pekabaran Injil dan pelayanan Advent di wilayah tersebut. Seiring dengan berkembangnya pekabaran Advent yang sudah diterima dengan baik oleh masyarakat, keberadaan gereja ini diharapkan dapat menjadi terang dan berkat bagi banyak orang, serta menjadi pusat pelayanan untuk memenangkan jiwa-jiwa bagi Kristus. Melalui pembangunan ini, kami percaya bahwa Tuhan sedang membuka jalan agar semakin banyak orang dapat mengenal kasih-Nya, bertumbuh dalam iman, and dipersiapkan menyambut kedatangan Kristus yang kedua kali.",
+        "cta-p2": "“Karena itu pergilah, jadikanlah semua bangsa murid-Ku dan baptislah mereka dalam nama Bapa dan Anak dan Roh Kudus.” - Matius 28:19",
+        "cta-p3": "Melalui dukungan Anda, pembangunan gereja ini dapat menjadi tempat di mana banyak jiwa mengenal kasih Tuhan and menerima pengharapan keselamatan.",
+        "cta-btn": "Dukung Sekarang", "foot-desc": "Website resmi pembangunan gereja dan penggalangan dana.", "foot-fb": "Klik di sini untuk melihat halaman Facebook kami", "foot-contact": "Kontak"
+      },
+      en: {
+        "nav-about": "About", "nav-donation": "Donation", "nav-gallery": "Gallery", "nav-video": "Video", "nav-hasil": "Results", "nav-contact": "Contact",
+        "hero-title": "Let Us Together Build the House of the Lord", "hero-desc": "Serving with love, living in hope, and preparing for the second coming of Christ.", "hero-btn-primary": "Donate Now", "hero-btn-secondary": "About Church",
+        "about-title": "About the Church", "about-subtitle": "Get to know more about GMAHK Ambang Congregation.", "about-h3": "A Place of Worship for the Future",
+        "about-p1": "GMAHK Ambang Congregation is a growing church with a high spirit of service, togetherness, and love in serving God and others. This church is present as a place to strengthen the congregation's relationship with God, build faith, and become a center of spiritual service for the surrounding community.",
+        "about-p2": "Currently, we are constructing the church building to provide a comfortable, safe, and proper place of worship for the entire congregation. This construction is not just about erecting a building, but also building a place where everyone can come to pray, fellowship, learn God's word, and feel Christ's love in togetherness.",
+        "about-p3": "We believe that through the support of prayers, energy, and participation from the congregation and donors, the construction of this house of God can be completed well. Every assistance provided will become part of the ministry and a spiritual investment to support the future services of the church.",
+        "don-title": "Construction Progress", "don-subtitle": "Every support will greatly help the construction process of the GMAHK Ambang Congregation church building.", "don-stage": "STAGE 1",
+        "card-target": "Target Fund", "card-collected": "Fund Collected", "card-progress": "Progress", "don-thanks": "Thank you to all donors who have supported the construction of the church.",
+        "bank-title": "Donation via Bank Transfer", "bank-desc": "For Brothers/Sisters who wish to support the church construction, donations can be sent through the following account:", "bank-an": "SRI WARTINI - on behalf of GMAHK Perkumpulan Ambang",
+        "btn-wa": "📩 Send Proof of Transfer via WhatsApp", "btn-sheet": "📊 View Donor List",
+        "gal-title": "Activity Gallery", "gal-subtitle": "Documentation of GMAHK Ambang Congregation activities for church construction.",
+        "vid-title": "Ministry Videos", "vid-subtitle": "Videos of members' community work and church construction developments.",
+        "v1-title": "Congregation Community Work in Laying the Foundation for the Church Building Construction in Ambang Village", "v1-desc": "The congregation enthusiastically carried out community work in making the foundation for the construction of the church building in Ambang Village as a form of service and togetherness. The entire congregation took part in clearing the location, digging the ground, lifting stones, to providing consumption. This activity accelerated church construction while strengthening brotherhood and the spirit of mutual cooperation among the congregation.",
+        "v2-title": "The spirit of the congregation's community work to establish the house of God", "v2-desc": "Documentation of the construction process and ministry of the GMAHK Ambang Congregation. Members are very eager to build God's church, young and old alike serving God with a sincere heart. Although heavy burdens are carried, they believe that God will never leave them. On the contrary, God Himself will be their helper.",
+        "v3-title": "The congregation is enthusiastically preparing to organize into a congregation status", "v3-desc": "Togetherness of the congregation in ministry and community work for the construction of the house of the Lord. Also, the congregation is preparing to raise their status from a Sabbath School branch to an organized congregation, starting from children, youth, parents, to grandparents. United in high spirits to serve and praise the name of the Lord. Up to this point, the congregation is very grateful because God has never left them.",
+        "has-title": "Construction Progress Results", "has-subtitle": "Documentation of construction results from donation funds collected by the congregation of GMAHK Perkumpulan Ambang.",
+        "h-item1": "Church Floor Construction", "h-item2": "Church Ceiling Construction", "h-item3": "Church Wall Plastering Construction", "h-item4": "Church Front Porch Construction",
+        "cta-title": "Be a Part of This Construction",
+        "cta-p1": "GMAHK Ambang Congregation is building a house of worship located in the Pantura DMBMG area, precisely in Ambang Village. The construction of this church is part of our service commitment to present a proper, comfortable place of worship and to become a center of spiritual growth for the congregation and the surrounding community. The location of this church construction has a very strategic position in supporting Gospel proclamation and Advent ministry in the area. Along with the development of the Advent message which has been well received by the community, the existence of this church is expected to be a light and a blessing to many people, as well as a service center to win souls for Christ. Through this construction, we believe that God is opening the way so that more people can know His love, grow in faith, and be prepared to welcome the second coming of Christ.",
+        "cta-p2": "“Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.” - Matthew 28:19",
+        "cta-p3": "Through your support, this church construction can become a place where many souls know God's love and receive the hope of salvation.",
+        "cta-btn": "Support Now", "foot-desc": "Official website for church construction and fundraising.", "foot-fb": "Click here to view our Facebook page", "foot-contact": "Contact"
+      }
+    };
 
-    // =========================================
-    // EDIT DATA DONASI DI SINI
-    // =========================================
+    let currentLang = 'id';
 
+    function switchLang(lang) {
+      currentLang = lang;
+      
+      document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-key]').forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (langData[lang][key]) {
+          if(key === 'don-stage') {
+            elem.innerHTML = `<i>${langData[lang][key]}</i>`;
+          } else {
+            elem.textContent = langData[lang][key];
+          }
+        }
+      });
+
+      updateProgress();
+    }
+
+    // DATA DONASI
     let targetDana = 50000000;
     let danaTerkumpul = 1750000;
 
-    // =========================================
-
-    function formatRupiah(angka){
-      return "Rp" + angka.toLocaleString("id-ID");
+    function formatCurrency(angka){
+      if(currentLang === 'id') {
+        return "Rp" + angka.toLocaleString("id-ID");
+      } else {
+        return "IDR " + angka.toLocaleString("en-US");
+      }
     }
 
     function updateProgress(){
+      let persen = (danaTerkumpul / targetDana) * 100;
+      if(persen > 100) persen = 100;
 
-      let persen =
-        (danaTerkumpul / targetDana) * 100;
-
-      if(persen > 100){
-        persen = 100;
-      }
-
-      document.getElementById("targetDana").innerHTML =
-        formatRupiah(targetDana);
-
-      document.getElementById("danaTerkumpul").innerHTML =
-        formatRupiah(danaTerkumpul);
-
-      document.getElementById("persenProgress").innerHTML =
-        persen.toFixed(0) + "%";
-
-      document.getElementById("progressBar").style.width =
-        persen + "%";
+      document.getElementById("targetDana").innerHTML = formatCurrency(targetDana);
+      document.getElementById("danaTerkumpul").innerHTML = formatCurrency(danaTerkumpul);
+      document.getElementById("persenProgress").innerHTML = persen.toFixed(0) + "%";
+      document.getElementById("progressBar").style.width = persen + "%";
     }
 
     updateProgress();
-
   </script>
 
 </body>
