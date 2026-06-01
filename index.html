@@ -735,7 +735,7 @@
       }
     }
 
-    /* SMALL MOBILE VIEW (HP SEPERTI DI GAMBAR KEDUA) */
+    /* SMALL MOBILE VIEW */
     @media(max-width:576px){
       nav {
         display: flex;
@@ -821,12 +821,17 @@
         line-height: 1.7;
         text-align: left;
       }
+      
+      /* PERBAIKAN GALERI: Menjadi 2 kolom untuk HP agar proporsional */
       .gallery{
-        grid-template-columns:1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
       .gallery img{
-        height:220px;
+        height:150px;
+        border-radius: 12px;
       }
+      
       .video-grid{
         grid-template-columns:1fr;
         gap: 25px;
@@ -969,6 +974,16 @@
       .about-text h3 {
         font-size: 19px;
       }
+      
+      /* PERBAIKAN GALERI: Untuk HP berlayar sangat ramping (< 400px) */
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .gallery img {
+        height: 120px;
+      }
+      
       .video-card iframe {
         height: 180px;
       }
@@ -1214,7 +1229,7 @@
         <div class="video-info">
           <h3 data-key="v2-title">Tangan-Tangan Kecil, Semangat Besar untuk Rumah Tuhan</h3>
           <p data-key="v2-desc">
-            Dengan hati yang tulus dan penuh sukacita, anak-anak turut ambil bagian dalam pembangunan rumah Tuhan. Melalui bantuan sederhana yang mereka berikan, terlihat kasih dan semangat mereka untuk mendukung pekerjaan Tuhan. Kehadiran dan kerelaan mereka menjadi pengingat bahwa tidak ada pelayanan yang terlalu kecil di hadapan Tuhan ketika dilakukan dengan kasih. Di balik tangan-tangan kecil mereka, terpancar iman yang besar serta kerinduan untuk ikut memuliakan nama Tuhan. Semoga semangat dan ketulusan mereka menjadi inspirasi bagi seluruh jemaat untuk terus setia melayani dalam pekerjaan Tuhan.
+            With a sincere heart and full of joy, children took part in building the house of the Lord. Through the simple help they provided, their love and enthusiasm to support God's work were visible. Their presence and willingness serve as a reminder that no service is too small in the sight of God when done with love. Behind their little hands, shines a great faith and a desire to help glorify God's name. May their spirit and sincerity inspire the entire congregation to continue serving faithfully in God's work.
           </p>
         </div>
       </div>
@@ -1234,7 +1249,7 @@
         <div class="video-info">
           <h3 data-key="v4-title">Semangat kerja bakti jemaat untuk mendirikan rumah tuhan</h3>
           <p data-key="v4-desc">
-            Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Perkumpulan Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan dan beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.
+            Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Perkumpulan Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan and beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.
           </p>
         </div>
       </div>
