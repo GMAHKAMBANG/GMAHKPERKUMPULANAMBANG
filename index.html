@@ -91,7 +91,7 @@
       font-weight:700;
       line-height:1.2;
       display: flex;
-      flex-direction: column; /* Mengatur agar teks otomatis turun ke bawah */
+      flex-direction: column;
     }
 
     .nav-right-container {
@@ -103,15 +103,19 @@
     nav ul{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:5px;
       list-style:none;
+    }
+
+    nav ul li{
+      position: relative;
     }
 
     nav ul li a{
       color:white;
       font-weight:500;
       font-size:15px;
-      padding:10px 16px;
+      padding:10px 14px;
       border-radius:12px;
       transition:0.3s ease;
       display:block;
@@ -120,6 +124,43 @@
     nav ul li a:hover{
       background:rgba(255,255,255,0.12);
       color:#facc15;
+    }
+
+    /* DROPDOWN MENU */
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 8px 0;
+      min-width: 200px;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: 0.3s ease;
+      z-index: 1100;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .dropdown-menu li a {
+      border-radius: 0;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #facc15;
     }
 
     /* LANGUAGE SWITCHER BUTTONS */
@@ -155,7 +196,6 @@
     }
 
     /* HAMBURGER */
-
     .menu-toggle{
       display:none;
       width:48px;
@@ -286,6 +326,14 @@
       line-height:1.8;
     }
 
+    .sub-section-title {
+      font-size: 26px;
+      color: #1f2937;
+      margin: 40px 0 20px 0;
+      border-left: 5px solid #facc15;
+      padding-left: 15px;
+    }
+
     /* ================= ABOUT ================= */
 
     .about{
@@ -361,7 +409,7 @@
       margin:30px 0;
     }
 
-    .progress{
+    .progress {
       width:35%;
       height:100%;
       background:linear-gradient(90deg,#facc15,#f59e0b);
@@ -535,6 +583,81 @@
       line-height:1.8;
       font-size:15px;
     }
+
+    /* ================= SECTION ARTIKEL ================= */
+    #artikel {
+      background: #ffffff;
+    }
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .article-card {
+      background: #f9fafb;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    }
+    .article-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .article-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .article-meta {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      color: #111827;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .article-body p {
+      color: #4b5563;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    
+    /* GAYA BUKA TUTUP TEKS ARTIKEL */
+    .article-more-text {
+      display: none; /* Sembunyikan sisa teks secara default */
+    }
+    .btn-read-more {
+      background: none;
+      border: none;
+      color: #1d4ed8;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 15px;
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      transition: color 0.2s;
+    }
+    .btn-read-more:hover {
+      color: #f59e0b;
+    }
+
+    /* ================= HASIL ================= */
 
     #hasil{
       background:#f8fafc;
@@ -715,6 +838,24 @@
         border-radius:14px;
         font-size:15px;
       }
+      
+      /* Mobile Dropdown adjustment */
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding-left: 20px;
+        width: 100%;
+        display: none;
+      }
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+      
       .hero{
         padding-top:160px;
       }
@@ -739,8 +880,8 @@
     @media(max-width:576px){
       nav {
         display: flex;
-        flex-direction: row;       /* Menjaga bentuk satu baris ke kanan */
-        flex-wrap: nowrap;          /* Mencegah komponen kanan turun kebawah */
+        flex-direction: row;      
+        flex-wrap: nowrap;          
         justify-content: space-between;
         align-items: center;
         padding: 12px 14px;
@@ -750,14 +891,14 @@
       }
       .logo-container{
         gap:8px;
-        max-width:62%;             /* Membatasi ruang teks agar tidak tabrakan */
+        max-width:62%;             
       }
       .logo-container img{
         width:40px;
         height:40px;
       }
       .logo-text{
-        font-size:12px;             /* Menyesuaikan ukuran font agar pas */
+        font-size:12px;             
         line-height:1.2;
       }
       .nav-right-container {
@@ -810,9 +951,6 @@
       .section-title p {
         font-size: 14px;
       }
-      .about{
-        gap:30px;
-      }
       .about-text h3{
         font-size:22px;
       }
@@ -822,7 +960,6 @@
         text-align: left;
       }
       
-      /* PERBAIKAN GALERI: Menjadi 2 kolom untuk HP agar proporsional */
       .gallery{
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -917,7 +1054,7 @@
       }
     }
 
-    /* ULTRA SMALL DEVICES (SCREEN < 400px - HP SANGAT KECIL) */
+    /* ULTRA SMALL DEVICES (SCREEN < 400px) */
     @media(max-width:400px){
       nav {
         flex-direction: row; 
@@ -975,7 +1112,6 @@
         font-size: 19px;
       }
       
-      /* PERBAIKAN GALERI: Untuk HP berlayar sangat ramping (< 400px) */
       .gallery {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
@@ -1019,8 +1155,28 @@
       <ul id="navMenu">
         <li><a href="#about" data-key="nav-about">Tentang</a></li>
         <li><a href="#donation" data-key="nav-donation">Donasi</a></li>
-        <li><a href="#gallery" data-key="nav-gallery">Gambar</a></li>
-        <li><a href="#video" data-key="nav-video">Video</a></li>
+        
+        <!-- DROPDOWN GAMBAR -->
+        <li class="dropdown">
+          <a href="#gallery" data-key="nav-gallery">Gambar ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#gambar-pelayanan" data-key="nav-gal-pelayanan">Gambar Pelayanan</a></li>
+            <li><a href="#gambar-kerja-bakti" data-key="nav-gal-bakti">Gambar Kerja Bakti</a></li>
+          </ul>
+        </li>
+
+        <!-- DROPDOWN VIDEO -->
+        <li class="dropdown">
+          <a href="#video" data-key="nav-video">Video ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#video-pelayanan" data-key="nav-vid-pelayanan">Video Pelayanan</a></li>
+            <li><a href="#video-kerja-bakti" data-key="nav-vid-bakti">Video Kerja Bakti</a></li>
+          </ul>
+        </li>
+
+        <!-- MENU ARTIKEL -->
+        <li><a href="#artikel" data-key="nav-artikel">Artikel</a></li>
+
         <li><a href="#hasil" data-key="nav-hasil">Hasil</a></li>
         <li><a href="#contact" data-key="nav-contact">Kontak</a></li>
       </ul>
@@ -1065,7 +1221,7 @@
         <h3 data-key="about-h3">Tempat Ibadah Untuk Masa Depan</h3>
 
         <p data-key="about-p1">
-          GMAHK Jemaat Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, dan menjadi pusat pelayanan rohani bagi masyarakat sekitar.
+          GMAHK Jemaat Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, and menjadi pusat pelayanan rohani bagi masyarakat sekitar.
         </p>
 
         <p data-key="about-p2">
@@ -1073,7 +1229,7 @@
         </p>
 
         <p data-key="about-p3">
-          Kami percaya bahwa melalui dukungan doa, tenaga, and partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.
+          Kami percaya bahwa melalui dukungan doa, tenaga, dan partisipasi dari jemaat serta para donatur, pembangunan rumah Tuhan ini dapat diselesaikan dengan baik. Setiap bantuan yang diberikan akan menjadi bagian dari pelayanan dan investasi rohani untuk mendukung pelayanan gereja di masa depan.
         </p>
 
       </div>
@@ -1168,39 +1324,67 @@
       <p data-key="gal-subtitle">Dokumentasi kegiatan GMAHK Jemaat Ambang untuk pembangunan gereja.</p>
     </div>
 
-    <div class="gallery">
-      <img src="./assets/foto/foto1.jpg">
-      <img src="./assets/foto/foto2.jpg">
-      <img src="./assets/foto/foto3.jpg">
-      <img src="./assets/foto/foto13.jpg">
-      <img src="./assets/foto/foto14.jpg">
-      <img src="./assets/foto/foto15.jpg">
-      <img src="./assets/foto/foto4.jpg">
-      <img src="./assets/foto/foto5.jpg">
-      <img src="./assets/foto/foto6.jpg">
-      <img src="./assets/foto/foto7.jpg">
-      <img src="./assets/foto/foto8.jpg">
-      <img src="./assets/foto/foto9.jpg">
-      <img src="./assets/foto/foto10.jpg">
-      <img src="./assets/foto/foto11.jpg">
-      <img src="./assets/foto/foto12.jpg">
-      <img src="./assets/foto/foto16.jpg">
-      <img src="./assets/foto/foto17.jpg">
-      <img src="./assets/foto/foto18.jpg">
-      <img src="./assets/foto/foto19.jpg">
-      <img src="./assets/foto/foto20.jpg">
-      <img src="./assets/foto/foto21.jpg">
-      <img src="./assets/foto/foto22.jpg">
-      <img src="./assets/foto/foto24.jpg">
-      <img src="./assets/foto/foto25.jpg">
-      <img src="./assets/foto/foto26.jpg">
-      <img src="./assets/foto/foto27.jpg">
-      <img src="./assets/foto/foto28.jpg">
-      <img src="./assets/foto/foto29.jpg">
-      <img src="./assets/foto/foto30.jpg">
-      <img src="./assets/foto/foto31.jpg">
-      <img src="./assets/foto/foto32.jpg">
-      <img src="./assets/foto/foto33.jpg">
+    <!-- Kategori Gambar Pelayanan -->
+    <div id="gambar-pelayanan">
+      <h3 class="sub-section-title" data-key="gal-sub-pelayanan">Gambar Pelayanan</h3>
+        <div class="gallery">
+          <img src="./assets/artikel/foto1.jpg">
+          <img src="./assets/artikel/foto2.jpg">
+          <img src="./assets/artikel/foto3.jpg">
+          <img src="./assets/artikel/foto4.jpg">
+          <img src="./assets/artikel/foto5.jpg">
+          <img src="./assets/artikel/foto6.jpg">
+          <img src="./assets/artikel/foto7.jpg">
+          <img src="./assets/artikel/foto8.jpg">
+          <img src="./assets/artikel/foto9.jpg">
+          <img src="./assets/artikel/foto10.jpg">
+          <img src="./assets/artikel/foto11.jpg">
+          <img src="./assets/artikel/foto12.jpg">
+          <img src="./assets/artikel/foto13.jpg">
+          <img src="./assets/artikel/foto14.jpg">
+          
+
+        </div>
+    </div>
+
+
+    <!-- Kategori Gambar Kerja Bakti -->
+    <div id="gambar-kerja-bakti">
+      <h3 class="sub-section-title" data-key="gal-sub-bakti">Gambar Kerja Bakti</h3>
+      <div class="gallery">
+        <img src="./assets/foto/foto1.jpg">
+        <img src="./assets/foto/foto2.jpg">
+        <img src="./assets/foto/foto3.jpg">
+        <img src="./assets/foto/foto13.jpg">
+        <img src="./assets/foto/foto14.jpg">
+        <img src="./assets/foto/foto15.jpg">
+        <img src="./assets/foto/foto4.jpg">
+        <img src="./assets/foto/foto5.jpg">
+        <img src="./assets/foto/foto6.jpg">
+        <img src="./assets/foto/foto7.jpg">
+        <img src="./assets/foto/foto8.jpg">
+        <img src="./assets/foto/foto9.jpg">
+        <img src="./assets/foto/foto10.jpg">
+        <img src="./assets/foto/foto11.jpg">
+        <img src="./assets/foto/foto12.jpg">
+        <img src="./assets/foto/foto16.jpg">
+        <img src="./assets/foto/foto17.jpg">
+        <img src="./assets/foto/foto18.jpg">
+        <img src="./assets/foto/foto19.jpg">
+        <img src="./assets/foto/foto20.jpg">
+        <img src="./assets/foto/foto21.jpg">
+        <img src="./assets/foto/foto22.jpg">
+        <img src="./assets/foto/foto24.jpg">
+        <img src="./assets/foto/foto25.jpg">
+        <img src="./assets/foto/foto26.jpg">
+        <img src="./assets/foto/foto27.jpg">
+        <img src="./assets/foto/foto28.jpg">
+        <img src="./assets/foto/foto29.jpg">
+        <img src="./assets/foto/foto30.jpg">
+        <img src="./assets/foto/foto31.jpg">
+        <img src="./assets/foto/foto32.jpg">
+        <img src="./assets/foto/foto33.jpg">
+      </div>
     </div>
 
   </section>
@@ -1208,74 +1392,136 @@
   <section id="video">
 
     <div class="section-title">
-      <h2 data-key="vid-title">Video Pelayanan</h2>
+      <h2 data-key="vid-title">Video Documentation</h2>
       <p data-key="vid-subtitle">Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.</p>
     </div>
 
-    <div class="video-grid">
-
-      <div class="video-card">
-        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video_1_1_rl99yr" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
-        <div class="video-info">
-          <h3 data-key="v1-title">Kerja Bakti Jemaat dalam Pembuatan Dasar Pembangunan Gedung Gereja di Desa Ambang</h3>
-          <p data-key="v1-desc">
-            Jemaat dengan penuh semangat dan kebersamaan melaksanakan kerja bakti dalam pembuatan fondasi pembangunan gedung gereja di Desa Ambang sebagai wujud nyata iman, pelayanan, dan dukungan terhadap pekerjaan Tuhan. Seluruh jemaat turut ambil bagian sesuai kemampuan masing-masing, mulai dari membersihkan lokasi, menggali tanah, mengangkat batu, hingga menyiapkan konsumsi bagi para pekerja. Melalui semangat gotong royong dan pengorbanan yang tulus, kegiatan ini tidak hanya membantu mempercepat proses pembangunan gereja, tetapi juga semakin mempererat persaudaraan, kebersamaan, dan kasih di antara sesama jemaat.
-          </p>
-        </div>
+    <!-- Kategori Video Pelayanan -->
+    <div id="video-pelayanan" style="margin-bottom: 60px;">
+      <h3 class="sub-section-title" data-key="vid-sub-pelayanan">Video Pelayanan</h3>
+      <div class="video-grid">
+        
       </div>
+    </div>
+
+    <!-- Kategori Video Kerja Bakti -->
+    <div id="video-kerja-bakti">
+      <h3 class="sub-section-title" data-key="vid-sub-bakti">Video Kerja Bakti</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video_1_1_rl99yr" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3 data-key="v1-title">Kerja Bakti Jemaat dalam Pembuatan Dasar Pembangunan Gedung Gereja di Desa Ambang</h3>
+            <p data-key="v1-desc">
+              Jemaat dengan penuh semangat dan kebersamaan melaksanakan kerja bakti dalam pembuatan fondasi pembangunan gedung gereja di Desa Ambang sebagai wujud nyata iman, pelayanan, dan dukungan terhadap pekerjaan Tuhan. Seluruh jemaat turut ambil bagian sesuai kemampuan masing-masing, mulai dari membersihkan lokasi, menggali tanah, mengangkat batu, hingga menyiapkan konsumsi bagi para pekerja. Melalui semangat gotong royong dan pengorbanan yang tulus, kegiatan ini tidak hanya membantu mempercepat proses pembangunan gereja, tetapi juga semakin mempererat persaudaraan, kebersamaan, dan kasih di antara sesama jemaat.
+            </p>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=Videoempatproject_bjfxxm" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3 data-key="v2-title">Tangan-Tangan Kecil, Semangat Besar untuk Rumah Tuhan</h3>
+            <p data-key="v2-desc">
+              Dengan hati yang tulus dan penuh sukacita, anak-anak turut ambil bagian dalam pembangunan rumah Tuhan. Melalui bantuan sederhana yang mereka berikan, terlihat kasih dan semangat mereka untuk mendukung pekerjaan Tuhan. Kehadiran dan kerelaan mereka menjadi pengingat bahwa tidak ada pelayanan yang terlalu kecil di hadapan Tuhan ketika dilakukan dengan kasih. Di balik tangan-tangan kecil mereka, terpancar iman yang besar serta kerinduan untuk ikut memuliakan nama Tuhan. Semoga semangat dan ketulusan mereka menjadi inspirasi bagi seluruh jemaat untuk terus setia melayani dalam pekerjaan Tuhan.
+            </p>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=VIDEO_003_sgxcfn" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3 data-key="v-new-title">Bersama Mewujudkan Rumah Tuhan</h3>
+            <p data-key="v-new-desc">
+              Pembangunan rumah Tuhan ini merupakan wujud nyata iman, kasih, dan pengharapan Jemaat GMAHK Jemaat Ambang. Di tengah berbagai keterbatasan dan tantangan, jemaat terus melangkah dengan semangat kebersamaan untuk mewujudkan tempat ibadah yang layak bagi penyembahan kepada Tuhan. Setiap tenaga yang dicurahkan, setiap bantuan yang diberikan, dan setiap doa yang dinaikkan menjadi bagian penting dalam perjalanan iman ini. Dengan keyakinan bahwa Tuhan memimpin setiap langkah, jemaat percaya bahwa apa yang saat ini sedang dibangun bukan sekadar sebuah gedung, melainkan sebuah rumah rohani yang akan menjadi berkat bagi banyak orang dan generasi yang akan datang.
+            </p>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=videolimaproject_1_btuiel" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3 data-key="v3-title">Kasih yang Dibangun dengan Keringat dan Iman</h3>
+            <p data-key="v3-desc">
+              Jemaat GMAHK Jemaat Ambang dengan penuh semangat dan kebersamaan turut mengambil bagian dalam pembangunan rumah Tuhan. Bapak-bapak dan ibu-ibu bekerja berdampingan, rela meluangkan waktu dan tenaga untuk mendukung pekerjaan Tuhan. Tidak hanya bapak-bapak, ibu-ibu pun turut membantu berbagai pekerjaan fisik sesuai kemampuan mereka, menunjukkan semangat pelayanan yang luar biasa. Di tengah beratnya pekerjaan, mereka tetap bekerja dengan sukacita karena memiliki kerinduan yang sama, yaitu melihat rumah Tuhan berdiri sebagai tempat beribadah dan memuliakan nama-Nya. Kebersamaan dan pengorbanan yang ditunjukkan menjadi bukti nyata kasih serta kesetiaan mereka dalam melayani Tuhan.
+            </p>
+          </div>
+        </div>
+        
+        <div class="video-card">
+          <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video1_aangcl&profile=cld-default" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3 data-key="v4-title">Semangat kerja bakti jemaat untuk mendirikan rumah tuhan</h3>
+            <p data-key="v4-desc">
+              Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Jemaat Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan dan beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.
+            </p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video2_llnwly&profile=cld-default" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3 data-key="v5-title">Jemaat semangat mempersiapkan pengorganisir menjadi jemaat</h3>
+            <p data-key="v5-desc">
+              Kebersamaan jemaat dalam pelayanan dan kerja bakti pembangunan rumah Tuhan menjadi wujud nyata iman dan semangat pengabdian kepada-Nya. Di tengah proses pembangunan ini, jemaat juga sedang mempersiapkan peningkatan status dari Cabang Sekolah Sabat menjadi Jemaat. Mulai dari anak-anak, kaum muda, orang dewasa, hingga oma dan opa, seluruh jemaat bersatu dalam semangat yang tinggi untuk melayani, memuji, dan memuliakan nama Tuhan. Hingga saat ini, jemaat terus bersyukur atas penyertaan dan kasih Tuhan yang tidak pernah meninggalkan mereka, melainkan senantiasa membimbing, menguatkan, dan memberkati setiap langkah pelayanan yang dilakukan.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= SECTION ARTIKEL ================= -->
+  <section id="artikel">
+    <div class="section-title">
+      <h2 data-key="art-title">Artikel & Renungan</h2>
+      <p data-key="art-subtitle">Kumpulan tulisan rohani, inspirasi iman, dan kabar dari GMAHK Jemaat Ambang.</p>
+    </div>
+
+    <div class="article-grid">
       
-      <div class="video-card">
-        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=Videoempatproject_bjfxxm" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
-        <div class="video-info">
-          <h3 data-key="v2-title">Tangan-Tangan Kecil, Semangat Besar untuk Rumah Tuhan</h3>
-          <p data-key="v2-desc">
-            Dengan hati yang tulus dan penuh sukacita, anak-anak turut ambil bagian dalam pembangunan rumah Tuhan. Melalui bantuan sederhana yang mereka berikan, terlihat kasih dan semangat mereka untuk mendukung pekerjaan Tuhan. Kehadiran dan kerelaan mereka menjadi pengingat bahwa tidak ada pelayanan yang terlalu kecil di hadapan Tuhan ketika dilakukan dengan kasih. Di balik tangan-tangan kecil mereka, terpancar iman yang besar serta kerinduan untuk ikut memuliakan nama Tuhan. Semoga semangat dan ketulusan mereka menjadi inspirasi bagi seluruh jemaat untuk terus setia melayani dalam pekerjaan Tuhan.
+      <!-- Artikel 1 -->
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=600&auto=format&fit=crop" class="article-img">
+        <div class="article-body">
+          <div class="article-meta">18 Juni 2026 • Pembangunan</div>
+          <h3 data-key="a1-title">Pentingnya Gotong Royong dalam Membangun Rumah Tuhan</h3>
+          <p>
+            <span data-key="a1-short">Melalui semangat kebersamaan di Desa Ambang, jemaat diajarkan bagaimana kerja bakti bukan sekadar membersihkan atau mengangkat batu, melainkan refleksi nyata dari iman yang hidup bersama Kristus.</span>
+            <span class="article-more-text" data-key="a1-more"> Ketika setiap anggota jemaat memberikan waktu, keringat, dan kontribusi terbaik mereka, pekerjaan berat pun terasa ringan. Gotong royong ini menyatukan hati, mengikis perbedaan, dan membangun kekompakan rohani yang kukuh untuk mewujudkan pusat pelayanan yang akan memberkati generasi saat ini hingga masa yang akan datang.</span>
           </p>
+          <button class="btn-read-more" onclick="toggleArticle(this)" data-btntype="read">Baca Selengkapnya →</button>
         </div>
       </div>
 
-      <div class="video-card">
-        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=VIDEO_003_sgxcfn" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
-        <div class="video-info">
-          <h3 data-key="v-new-title">Bersama Mewujudkan Rumah Tuhan</h3>
-          <p data-key="v-new-desc">
-            Pembangunan rumah Tuhan ini merupakan wujud nyata iman, kasih, dan pengharapan Jemaat GMAHK Jemaat Ambang. Di tengah berbagai keterbatasan dan tantangan, jemaat terus melangkah dengan semangat kebersamaan untuk mewujudkan tempat ibadah yang layak bagi penyembahan kepada Tuhan. Setiap tenaga yang dicurahkan, setiap bantuan yang diberikan, dan setiap doa yang dinaikkan menjadi bagian penting dalam perjalanan iman ini. Dengan keyakinan bahwa Tuhan memimpin setiap langkah, jemaat percaya bahwa apa yang saat ini sedang dibangun bukan sekadar sebuah gedung, melainkan sebuah rumah rohani yang akan menjadi berkat bagi banyak orang dan generasi yang akan datang.
+      <!-- Artikel 2 -->
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1519491050282-cf00c82424b4?q=80&w=600&auto=format&fit=crop" class="article-img">
+        <div class="article-body">
+          <div class="article-meta">10 Juni 2026 • Renungan</div>
+          <h3 data-key="a2-title">Tangan Kecil yang Membawa Berkat Besar</h3>
+          <p>
+            <span data-key="a2-short">Terinspirasi dari keterlibatan anak-anak dalam proses pembangunan gereja baru kita. Ketulusan hati anak-anak mengingatkan seluruh jemaat dewasa bahwa tidak ada kontribusi yang terlalu kecil di mata Tuhan.</span>
+            <span class="article-more-text" data-key="a2-more"> Dengan membawa material kecil atau sekadar membantu dengan penuh riang, mereka mengajarkan kita arti ketulusan murni. Pelayanan sejati tidak dinilai dari seberapa besar materi yang diberikan, melainkan dari ketulusan hati yang rindu melihat pekerjaan Tuhan berkembang dengan penuh sukacita di dunia ini.</span>
           </p>
+          <button class="btn-read-more" onclick="toggleArticle(this)" data-btntype="read">Baca Selengkapnya →</button>
         </div>
       </div>
 
-      <div class="video-card">
-        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=videolimaproject_1_btuiel" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
-        <div class="video-info">
-          <h3 data-key="v3-title">Kasih yang Dibangun dengan Keringat dan Iman</h3>
-          <p data-key="v3-desc">
-            Jemaat GMAHK Jemaat Ambang dengan penuh semangat dan kebersamaan turut mengambil bagian dalam pembangunan rumah Tuhan. Bapak-bapak dan ibu-ibu bekerja berdampingan, rela meluangkan waktu dan tenaga untuk mendukung pekerjaan Tuhan. Tidak hanya bapak-bapak, ibu-ibu pun turut membantu berbagai pekerjaan fisik sesuai kemampuan mereka, menunjukkan semangat pelayanan yang luar biasa. Di tengah beratnya pekerjaan, mereka tetap bekerja dengan sukacita karena memiliki kerinduan yang sama, yaitu melihat rumah Tuhan berdiri sebagai tempat beribadah dan memuliakan nama-Nya. Kebersamaan dan pengorbanan yang ditunjukkan menjadi bukti nyata kasih serta kesetiaan mereka dalam melayani Tuhan.
+      <!-- Artikel 3 -->
+      <div class="article-card">
+        <img src="./assets/foto/desaingereja.png" class="article-img" onerror="this.src='https://images.unsplash.com/photo-1438211331416-0be89c6e6200?q=80&w=600&auto=format&fit=crop'">
+        <div class="article-body">
+          <div class="article-meta">01 Juni 2026 • Kabar Jemaat</div>
+          <h3 data-key="a3-title">Menuju Pengorganisasian Jemaat yang Mandiri</h3>
+          <p>
+            <span data-key="a3-short">Persiapan GMAHK Jemaat Ambang untuk beralih status dari Cabang Sekolah Sabat menjadi Jemaat yang terorganisir penuh. Mari kita dukung terus dalam doa dan usaha pembangunan fisik ini.</span>
+            <span class="article-more-text" data-key="a3-more"> Langkah menuju kemandirian jemaat ini memerlukan kematangan rohani, administrasi, dan dedikasi penuh. Dengan berdirinya bangunan gereja yang representatif, pekabaran Injil tiga malaikat dapat dijalankan dengan lebih sistematis, mandiri, dan mampu menjangkau lebih banyak jiwa yang rindu akan kebenaran firman Tuhan di wilayah sekitar.</span>
           </p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video1_aangcl&profile=cld-default" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
-        <div class="video-info">
-          <h3 data-key="v4-title">Semangat kerja bakti jemaat untuk mendirikan rumah tuhan</h3>
-          <p data-key="v4-desc">
-            Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Jemaat Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan and beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.
-          </p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://player.cloudinary.com/embed/?cloud_name=dlketp8bt&public_id=video2_llnwly&profile=cld-default" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
-        <div class="video-info">
-          <h3 data-key="v5-title">Jemaat semangat mempersiapkan pengorganisir menjadi jemaat</h3>
-          <p data-key="v5-desc">
-            Kebersamaan jemaat dalam pelayanan dan kerja bakti pembangunan rumah Tuhan menjadi wujud nyata iman dan semangat pengabdian kepada-Nya. Di tengah proses pembangunan ini, jemaat juga sedang mempersiapkan peningkatan status dari Cabang Sekolah Sabat menjadi Jemaat. Mulai dari anak-anak, kaum muda, orang dewasa, hingga oma dan opa, seluruh jemaat bersatu dalam semangat yang tinggi untuk melayani, memuji, dan memuliakan nama Tuhan. Hingga saat ini, jemaat terus bersyukur atas penyertaan dan kasih Tuhan yang tidak pernah meninggalkan mereka, melainkan senantiasa membimbing, menguatkan, dan memberkati setiap langkah pelayanan yang dilakukan.
-          </p>
+          <button class="btn-read-more" onclick="toggleArticle(this)" data-btntype="read">Baca Selengkapnya →</button>
         </div>
       </div>
 
     </div>
-
   </section>
 
   <section id="hasil">
@@ -1369,6 +1615,7 @@
     const menuToggle = document.getElementById("menuToggle");
     const navbar = document.getElementById("navbar");
 
+    // Toggle menu mobile utama
     menuToggle.addEventListener("click", () => {
       navMenu.classList.toggle("active");
       if(navMenu.classList.contains("active")){
@@ -1378,10 +1625,24 @@
       }
     });
 
-    document.querySelectorAll("#navMenu a").forEach(link => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("active");
-        menuToggle.innerHTML = "☰";
+    // Menangani klik pada tautan dan dropdown di tampilan mobile
+    document.querySelectorAll("#navMenu li a").forEach(link => {
+      link.addEventListener("click", (e) => {
+        const parent = link.parentElement;
+        
+        if (parent.classList.contains("dropdown") && window.innerWidth <= 860) {
+          if (e.target === link && link.getAttribute('href').startsWith('#')) {
+            parent.classList.toggle("active");
+            e.preventDefault();
+            return;
+          }
+        }
+        
+        if (!parent.classList.contains("dropdown") || e.target.parentElement.parentElement.classList.contains("dropdown-menu")) {
+          navMenu.classList.remove("active");
+          menuToggle.innerHTML = "☰";
+          document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("active"));
+        }
       });
     });
 
@@ -1397,15 +1658,38 @@
       if(window.innerWidth > 860){
         navMenu.classList.remove("active");
         menuToggle.innerHTML = "☰";
+        document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("active"));
       }
     });
+
+    // FUNGSI JAVASCRIPT BUKA TUTUP TEKS ARTIKEL
+    function toggleArticle(btn) {
+      const cardBody = btn.parentElement;
+      const moreText = cardBody.querySelector(".article-more-text");
+      
+      if (moreText.style.display === "inline") {
+        // Jika sedang terbuka -> Tutup kembali
+        moreText.style.display = "none";
+        btn.setAttribute("data-btntype", "read");
+        btn.textContent = currentLang === 'id' ? "Baca Selengkapnya →" : "Read More →";
+      } else {
+        // Jika sedang tertutup -> Buka teks panjang
+        moreText.style.display = "inline";
+        btn.setAttribute("data-btntype", "less");
+        btn.textContent = currentLang === 'id' ? "← Sembunyikan" : "← Hide";
+      }
+    }
   </script>
 
   <script>
     // DATA TRANSLASI BAHASA
     const langData = {
       id: {
-        "nav-about": "Tentang", "nav-donation": "Donasi", "nav-gallery": "Gambar", "nav-video": "Video", "nav-hasil": "Hasil", "nav-contact": "Kontak",
+        "nav-about": "Tentang", "nav-donation": "Donasi", "nav-gallery": "Gambar ▾", "nav-video": "Video ▾", "nav-artikel": "Artikel", "nav-hasil": "Hasil", "nav-contact": "Kontak",
+        "nav-gal-pelayanan": "Gambar Pelayanan", "nav-gal-bakti": "Gambar Kerja Bakti",
+        "nav-vid-pelayanan": "Video Pelayanan", "nav-vid-bakti": "Video Kerja Bakti",
+        "gal-sub-pelayanan": "Gambar Pelayanan", "gal-sub-bakti": "Gambar Kerja Bakti",
+        "vid-sub-pelayanan": "Video Pelayanan", "vid-sub-bakti": "Video Kerja Bakti",
         "hero-title": "Mari Bersama Membangun Rumah Tuhan", "hero-desc": "Melayani dengan kasih, hidup dalam pengharapan, dan mempersiapkan kedatangan Kristus yang kedua kali.", "hero-btn-primary": "Donasi Sekarang", "hero-btn-secondary": "Tentang Gereja",
         "about-title": "Tentang Gereja", "about-subtitle": "Mari mengenal lebih dekat dengan GMAHK Jemaat Ambang.", "about-h3": "Tempat Ibadah Untuk Masa Depan",
         "about-p1": "GMAHK Jemaat Ambang adalah gereja yang sedang berkembang dengan semangat pelayanan yang tinggi, kebersamaan, dan kasih dalam melayani Tuhan serta sesama. Gereja ini hadir sebagai tempat untuk mempererat hubungan jemaat dengan Tuhan, membangun iman, dan menjadi pusat pelayanan rohani bagi masyarakat sekitar.",
@@ -1416,13 +1700,23 @@
         "bank-title": "Donasi Melalui Transfer Bank", "bank-desc": "Bagi Bapak/Ibu/Saudara yang ingin mendukung pembangunan gereja, donasi dapat dikirim melalui rekening berikut:", "bank-an": "SRI WARTINI - a/n GMAHK Jemaat Ambang",
         "btn-wa": "📩 Kirim Bukti Transfer via WhatsApp", "btn-sheet": "📊 Lihat Daftar Donatur",
         "gal-title": "Gambar Kegiatan", "gal-subtitle": "Dokumentasi kegiatan GMAHK Jemaat Ambang untuk pembangunan gereja.",
-        "vid-title": "Video Pelayanan", "vid-subtitle": "Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.",
+        "vid-title": "Video Dokumentasi", "vid-subtitle": "Video kegiatan kerja bakti anggota dan perkembangan pembangunan gereja.",
         "v1-title": "Kerja Bakti Jemaat dalam Pembuatan Dasar Pembangunan Gedung Gereja di Desa Ambang", "v1-desc": "Jemaat dengan penuh semangat dan kebersamaan melaksanakan kerja bakti dalam pembuatan fondasi pembangunan gedung gereja di Desa Ambang sebagai wujud nyata iman, pelayanan, dan dukungan terhadap pekerjaan Tuhan. Seluruh jemaat turut ambil bagian sesuai kemampuan masing-masing, mulai dari membersihkan lokasi, menggali tanah, mengangkat batu, hingga menyiapkan konsumsi bagi para pekerja. Melalui semangat gotong royong dan pengorbanan yang tulus, kegiatan ini tidak hanya membantu mempercepat proses pembangunan gereja, tetapi juga semakin mempererat persaudaraan, kebersamaan, dan kasih di antara sesama jemaat.",
         "v-new-title": "Bersama Mewujudkan Rumah Tuhan","v-new-desc": "Pembangunan rumah Tuhan ini merupakan wujud nyata iman, kasih, dan pengharapan Jemaat GMAHK Jemaat Ambang. Di tengah berbagai keterbatasan dan tantangan, jemaat terus melangkah dengan semangat kebersamaan untuk mewujudkan tempat ibadah yang layak bagi penyembahan kepada Tuhan. Setiap tenaga yang dicurahkan, setiap bantuan yang diberikan, dan setiap doa yang dinaikkan menjadi bagian penting dalam perjalanan iman ini. Dengan keyakinan bahwa Tuhan memimpin setiap langkah, jemaat percaya bahwa apa yang saat ini sedang dibangun bukan sekadar sebuah gedung, melainkan sebuah rumah rohani yang akan menjadi berkat bagi banyak orang dan generasi yang akan datang.",
         "v2-title": "Tangan-Tangan Kecil, Semangat Besar untuk Rumah Tuhan", "v2-desc": "Dengan hati yang tulus dan penuh sukacita, anak-anak turut ambil bagian dalam pembangunan rumah Tuhan. Melalui bantuan sederhana yang mereka berikan, terlihat kasih dan semangat mereka untuk mendukung pekerjaan Tuhan. Kehadiran dan kerelaan mereka menjadi pengingat bahwa tidak ada pelayanan yang terlalu kecil di hadapan Tuhan ketika dilakukan dengan kasih. Di balik tangan-tangan kecil mereka, terpancar iman yang besar serta kerinduan untuk ikut memuliakan nama Tuhan. Semoga semangat dan ketulusan mereka menjadi inspirasi bagi seluruh jemaat untuk terus setia melayani dalam pekerjaan Tuhan.",
         "v3-title": "Kasih yang Dibangun dengan Keringat dan Iman", "v3-desc": "Jemaat GMAHK Jemaat Ambang dengan penuh semangat dan kebersamaan turut mengambil bagian dalam pembangunan rumah Tuhan. Bapak-bapak dan ibu-ibu bekerja berdampingan, rela meluangkan waktu dan tenaga untuk mendukung pekerjaan Tuhan. Tidak hanya bapak-bapak, ibu-ibu pun turut membantu berbagai pekerjaan fisik sesuai kemampuan mereka, menunjukkan semangat pelayanan yang luar biasa. Di tengah beratnya pekerjaan, mereka tetap bekerja dengan sukacita karena memiliki kerinduan yang sama, yaitu melihat rumah Tuhan berdiri sebagai tempat beribadah dan memuliakan nama-Nya. Kebersamaan dan pengorbanan yang ditunjukkan menjadi bukti nyata kasih serta kesetiaan mereka dalam melayani Tuhan.",
         "v4-title": "Semangat kerja bakti jemaat untuk mendirikan rumah tuhan", "v4-desc": "Dokumentasi proses pembangunan gereja dan pelayanan jemaat GMAHK Jemaat Ambang. Dengan penuh semangat dan kebersamaan, jemaat dari berbagai kalangan usia, baik orang muda maupun orang tua, bergandengan tangan dalam mendirikan rumah Tuhan. Mereka melayani dengan hati yang tulus, mengorbankan tenaga dan waktu demi kemuliaan nama-Nya. Meskipun menghadapi berbagai tantangan dan beban pekerjaan yang tidak ringan, mereka tetap percaya bahwa Tuhan tidak pernah meninggalkan umat-Nya. Sebaliknya, Tuhan senantiasa menjadi penolong, sumber kekuatan, dan pengharapan dalam setiap langkah pembangunan ini.",
         "v5-title": "Jemaat semangat mempersiapkan pengorganisir menjadi jemaat", "v5-desc": "Kebersamaan jemaat dalam pelayanan dan kerja bakti pembangunan rumah Tuhan menjadi wujud nyata iman dan semangat pengabdian kepada-Nya. Di tengah proses pembangunan ini, jemaat juga sedang mempersiapkan peningkatan status dari Cabang Sekolah Sabat menjadi Jemaat. Mulai dari anak-anak, kaum muda, orang dewasa, hingga oma dan opa, seluruh jemaat bersatu dalam semangat yang tinggi untuk melayani, memuji, dan memuliakan nama Tuhan. Hingga saat ini, jemaat terus bersyukur atas penyertaan dan kasih Tuhan yang tidak pernah meninggalkan mereka, melainkan senantiasa membimbing, menguatkan, dan memberkati setiap langkah pelayanan yang dilakukan.",
+        "art-title": "Artikel & Renungan", "art-subtitle": "Kumpulan tulisan rohani, inspirasi iman, dan kabar dari GMAHK Jemaat Ambang.",
+        "a1-title": "Pentingnya Gotong Royong dalam Membangun Rumah Tuhan",
+        "a1-short": "Melalui semangat kebersamaan di Desa Ambang, jemaat diajarkan bagaimana kerja bakti bukan sekadar membersihkan atau mengangkat batu, melainkan refleksi nyata dari iman yang hidup bersama Kristus.",
+        "a1-more": " Ketika setiap anggota jemaat memberikan waktu, keringat, dan kontribusi terbaik mereka, pekerjaan berat pun terasa ringan. Gotong royong ini menyatukan hati, mengikis perbedaan, dan membangun kekompakan rohani yang kukuh untuk mewujudkan pusat pelayanan yang akan memberkati generasi saat ini hingga masa yang akan datang.",
+        "a2-title": "Tangan Kecil yang Membawa Berkat Besar",
+        "a2-short": "Terinspirasi dari keterlibatan anak-anak dalam proses pembangunan gereja baru kita. Ketulusan hati anak-anak mengingatkan seluruh jemaat dewasa bahwa tidak ada kontribusi yang terlalu kecil di mata Tuhan.",
+        "a2-more": " Dengan membawa material kecil atau sekadar membantu dengan penuh riang, mereka mengajarkan kita arti ketulusan murni. Pelayanan sejati tidak dinilai dari seberapa besar materi yang diberikan, melainkan dari ketulusan hati yang rindu melihat pekerjaan Tuhan berkembang dengan penuh sukacita di dunia ini.",
+        "a3-title": "Menuju Pengorganisasian Jemaat yang Mandiri",
+        "a3-short": "Persiapan GMAHK Jemaat Ambang untuk beralih status dari Cabang Sekolah Sabat menjadi Jemaat yang terorganisir penuh. Mari kita dukung terus dalam doa dan usaha pembangunan fisik ini.",
+        "a3-more": " Langkah menuju kemandirian jemaat ini memerlukan kematangan rohani, administrasi, dan dedikasi penuh. Dengan berdirinya bangunan gereja yang representatif, pekabaran Injil tiga malaikat dapat dijalankan dengan lebih sistematis, mandiri, dan mampu menjangkau lebih banyak jiwa yang rindu akan kebenaran firman Tuhan di wilayah sekitar.",
         "has-title": "Hasil Pembangunan", "has-subtitle": "Dokumentasi hasil pembangunan dari dana donasi yang terkumpul oleh jemaat GMAHK Jemaat Ambang.",
         "h-item1": "Pembangunan Lantai Gereja", "h-item2": "Pembangunan Plafon Gereja", "h-item3": "Pembangunan Plester Dinding Gereja", "h-item4": "Pembangunan Teras Depan Gereja",
         "cta-title": "Jadilah Bagian Dari Pembangunan Ini",
@@ -1432,7 +1726,11 @@
         "cta-btn": "Dukung Sekarang", "foot-desc": "Website resmi pembangunan gereja dan penggalangan dana.", "foot-fb": "Klik di sini untuk melihat halaman Facebook kami", "foot-contact": "Kontak"
       },
       en: {
-        "nav-about": "About", "nav-donation": "Donation", "nav-gallery": "Gallery", "nav-video": "Videos", "nav-hasil": "Results", "nav-contact": "Contact",
+        "nav-about": "About", "nav-donation": "Donation", "nav-gallery": "Gallery ▾", "nav-video": "Videos ▾", "nav-artikel": "Articles", "nav-hasil": "Results", "nav-contact": "Contact",
+        "nav-gal-pelayanan": "Ministry Gallery", "nav-gal-bakti": "Community Work Gallery",
+        "nav-vid-pelayanan": "Ministry Videos", "nav-vid-bakti": "Community Work Videos",
+        "gal-sub-pelayanan": "Ministry Gallery", "gal-sub-bakti": "Community Work Gallery",
+        "vid-sub-pelayanan": "Ministry Videos", "vid-sub-bakti": "Community Work Videos",
         "hero-title": "Let Us Together Build the House of the Lord", "hero-desc": "Serving with love, living in hope, and preparing for the second coming of Christ.", "hero-btn-primary": "Donate Now", "hero-btn-secondary": "About Church",
         "about-title": "About the Church", "about-subtitle": "Get to know more about GMAHK Ambang Congregation.", "about-h3": "A Place of Worship for the Future",
         "about-p1": "GMAHK Ambang Congregation is a growing church with a high spirit of service, togetherness, and love in serving God and others. This church is present as a place to strengthen the congregation's relationship with God, build faith, and become a center of spiritual service for the surrounding community.",
@@ -1443,20 +1741,30 @@
         "bank-title": "Donation via Bank Transfer", "bank-desc": "For Brothers/Sisters who wish to support the church construction, donations can be sent through the following account:", "bank-an": "SRI WARTINI - on behalf of GMAHK Jemaat Ambang",
         "btn-wa": "📩 Send Proof of Transfer via WhatsApp", "btn-sheet": "📊 View Donor List",
         "gal-title": "Activity Gallery", "gal-subtitle": "Documentation of GMAHK Ambang Congregation activities for church construction.",
-        "vid-title": "Ministry Videos", "vid-subtitle": "Videos of members' community work and church construction developments.",
+        "vid-title": "Video Documentation", "vid-subtitle": "Videos of members' community work and church construction developments.",
         "v1-title": "Congregation Community Work in Laying the Foundation for the Church Building Construction in Ambang Village", "v1-desc": "The congregation enthusiastically carried out community work in making the foundation for the construction of the church building in Ambang Village as a form of service and togetherness. The entire congregation took part in clearing the location, digging the ground, lifting stones, to providing consumption. This activity accelerated church construction while strengthening brotherhood and the spirit of mutual cooperation among the congregation.",
-        "v2-title": "The Little Hands, Big Spirit for the House of the Lord", "v2-desc": "With a sincere heart and full of joy, children took part in building the house of the Lord. Through the simple help they provided, their love and enthusiasm to support God's work were visible. Their presence and willingness serve as a reminder that no service is too small in the sight of God when done with love. Behind their little hands, shines a great faith and a desire to help glorify God's name. May their spirit and sincerity inspire the entire congregation to continue serving faithfully in God's work.",
+        "v2-title": "The Little Hands, Big Spirit for the House of the Lord", "v2-desc": "With sincere and joyful hearts, the children participated in the construction of God's house. Through the simple assistance they provided, their love and enthusiasm for supporting God's work were evident. Their presence and willingness served as a reminder that no service is too small before God when done with love. Behind their small hands radiated great faith and a desire to glorify God's name. May their enthusiasm and sincerity inspire the entire congregation to continue faithfully serving in God's work.",
         "v-new-title": "Together Building the House of God", "v-new-desc": "The construction of the House of God is a tangible expression of the faith, love, and hope of the GMAHK Ambang Congregation. Amid various limitations and challenges, the congregation continues to move forward in unity and dedication to establish a proper place of worship for God. Every effort, every contribution, and every prayer offered becomes an important part of this journey of faith. Trusting that God guides every step, the congregation believes that what is being built today is not merely a building, but a spiritual home that will become a blessing to many people and future generations.",
         "v3-title": "Love Built with Sweat and Faith", "v3-desc": "The congregation of GMAHK Ambang Congregation enthusiastically took part in building the house of the Lord. Men and women worked side by side, willingly spending time and energy to support God's work. Not only men, but women also helped with various physical tasks according to their abilities, showing an extraordinary spirit of service. In the midst of the hard work, they remained joyful because they shared the same longing, which is to see God's house stand as a place to worship and glorify His name. The togetherness and sacrifice shown are clear evidence of their love and faithfulness in serving God.",
         "v4-title": "The spirit of the congregation's community work to establish the house of God", "v4-desc": "Documentation of the construction process and ministry of the GMAHK Ambang Congregation. Members are very eager to build God's church, young and old alike serving God with a sincere heart. Although heavy burdens are carried, they believe that God will never leave them. On the contrary, God Himself will be their helper.",
         "v5-title": "The congregation is enthusiastically preparing to organize into a congregation status", "v5-desc": "Togetherness of the congregation in ministry and community work for the construction of the house of the Lord. Also, the congregation is preparing to raise their status from a Sabbath School branch to an organized congregation, starting from children, youth, parents, to grandparents. United in high spirits to serve and praise the name of the Lord. Up to this point, the congregation is very grateful because God has never left them.",
+        "art-title": "Articles & Devotions", "art-subtitle": "A collection of spiritual writings, faith inspiration, and news from GMAHK Ambang Congregation.",
+        "a1-title": "The Importance of Cooperation in Building God's House",
+        "a1-short": "Through the spirit of togetherness in Ambang Village, the congregation is taught that community work is not just cleaning or lifting stones, but a tangible reflection of a living faith with Christ.",
+        "a1-more": " When each member of the congregation contributes their time, effort, and devotion, the heavy burden feels light. This mutual cooperation unites hearts, dynamic differences, and creates strong spiritual integration to realize a center of worship that will bless generations today and tomorrow.",
+        "a2-title": "Little Hands Bringing Big Blessings",
+        "a2-short": "Inspired by children's involvement in our new church building process. The children's sincerity reminds adult congregation members that no contribution is too small in God's eyes.",
+        "a2-more": " By bringing small materials or simply helping joyfully, they teach us the meaning of pure sincerity. True service is not evaluated by the magnitude of material wealth provided, but by a pure heart that longs to see God's work flourish in joy.",
+        "a3-title": "Towards Independent Congregation Organization",
+        "a3-short": "Preparation of GMAHK Ambang Congregation to transition from a Sabbath School Branch to a fully organized Congregation. Let's keep supporting in prayer and physical construction efforts.",
+        "a3-more": " This transition toward an independent congregation status requires spiritual maturity, administrative updates, and wholehearted dedication. With a proper church building, the three angels' message can be carried out more structurally and reach more souls.",
         "has-title": "Construction Progress Results", "has-subtitle": "Documentation of construction results from donation funds collected by the congregation of GMAHK Jemaat Ambang.",
         "h-item1": "Church Floor Construction", "h-item2": "Church Ceiling Construction", "h-item3": "Church Wall Plastering Construction", "h-item4": "Church Front Porch Construction",
         "cta-title": "Be a Part of This Construction",
-        "cta-p1": "GMAHK Ambang Congregation is building a house of worship located in the Pantura DMBMG area, precisely in Ambang Village. The construction of this church is part of our service commitment to present a proper, comfortable place of worship and to become a center of spiritual growth for the congregation and the surrounding community. The location of this church construction has a very strategic position in supporting Gospel proclamation and Advent ministry in the area. Along with the development of the Advent message which has been well received by the community, the existence of this church is expected to be a light and a blessing to many people, as well as a service center to win souls for Christ. Through this construction, we believe that God is opening the way so that more people can know His love, grow in faith, and be prepared to welcome the second coming of Christ.",
+        "cta-p1": "GMAHK Ambang Congregation is building a house of worship located in the Pantura DMBMG area, precisely in Ambang Village. The construction of this church is part of our service commitment to present a proper, comfortable place of worship and to become a center of spiritual growth for the congregation and the surrounding community. Location of this church construction has a very strategic position in supporting Gospel proclamation and Advent ministry in the area. Along with the development of the Advent message which has been well received by the community, the existence of this church is expected to be a light and a blessing to many people, as well as a service center to win souls for Christ. Through this construction, we believe that God is opening the way so that more people can know His love, grow in faith, and be prepared to welcome the second coming of Christ.",
         "cta-p2": "“Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.” - Matthew 28:19",
         "cta-p3": "Through your support, this church construction can become a place where many souls know God's love and receive the hope of salvation.",
-        "cta-btn": "Support Now", "foot-desc": "Official website for church construction and fundraising.", "foot-fb": "Click here to view our Facebook page", "foot-contact": "Contact"
+        "cta-btn": "Support Now", "foot-desc": "Official website for church construction and fundraising.", "foot-fb": "View Facebook Page", "foot-contact": "Contact"
       }
     };
 
@@ -1478,6 +1786,16 @@
           } else {
             elem.textContent = langData[lang][key];
           }
+        }
+      });
+
+      // Menyesuaikan teks pada tombol Artikel Aktif setelah ganti bahasa
+      document.querySelectorAll(".btn-read-more").forEach(btn => {
+        const type = btn.getAttribute("data-btntype");
+        if(type === 'read') {
+          btn.textContent = lang === 'id' ? "Baca Selengkapnya →" : "Read More →";
+        } else {
+          btn.textContent = lang === 'id' ? "← Sembunyikan" : "← Hide";
         }
       });
 
